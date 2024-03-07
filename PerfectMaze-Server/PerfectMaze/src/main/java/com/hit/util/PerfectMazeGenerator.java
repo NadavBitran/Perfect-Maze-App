@@ -46,7 +46,7 @@ public class PerfectMazeGenerator {
             }
         }
 
-        return new PerfectMazeBoard(perfectMaze, mazeSize);
+        return new PerfectMazeBoard(perfectMaze, 2 * mazeSize - 1);
     }
 
     /**

@@ -2,6 +2,10 @@ package com.hit.service;
 
 public class UserService {
 
+
+    public UserService(String filePath) {
+
+    }
     // should support operations such as: register, login, update user details and delete user details
 
     // SUGGESTION: Maybe implementing basic user authentication system rather than just saving raw password? Like the following:

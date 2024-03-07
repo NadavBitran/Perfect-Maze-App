@@ -18,7 +18,7 @@ public class Program {
         String userId = "user123";
 
         // STEP 1. Client communicating with server to generate a maze (10x10 maze example)
-        GameService gameService = new GameService();
+        GameService gameService = new GameService("games.txt");
         int usersChosenMazeSize = 10;
         PerfectMazeBoard generatedMaze = gameService.generateMaze(usersChosenMazeSize);
         // generated maze sends back to client and starts playing...

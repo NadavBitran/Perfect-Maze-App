@@ -25,11 +25,15 @@ public class GameList implements Serializable {
         gameList.put(game.getGameId(), game);
     }
 
-    public void removeGameFromList(String gameId) {
-        gameList.remove(gameId);
+    public boolean removeGameFromList(String gameId) {
+        return gameList.remove(gameId) != null;
     }
 
     public List<Game> getGameList() {
         return new ArrayList<>(gameList.values());
+    }
+
+    public int getGamesCount() {
+        return gameList.size();
     }
 }

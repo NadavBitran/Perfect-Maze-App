@@ -4,6 +4,7 @@ import com.hit.algorithm.DFS;
 import com.hit.dao.Dao;
 import com.hit.dm.Game;
 import com.hit.dm.GameList;
+import com.hit.dm.User;
 import com.hit.undirectedGraph.UndirectedGraph;
 import com.hit.dm.PerfectMazeBoard;
 import com.hit.util.PerfectMazeGenerator;
@@ -22,8 +23,8 @@ public class GameService {
     /**
      * Constructs a GameService with a default Dao instance.
      */
-    public GameService() {
-        this.gameDao = new Dao<>("games.txt");
+    public GameService(String filePath) {
+        this.gameDao = new Dao<>(filePath);
     }
 
     /**
@@ -33,6 +34,8 @@ public class GameService {
      * @return {@code true} if the game was successfully saved, {@code false} otherwise.
      */
     public boolean saveGame(Game gamePlayed) {
+        // check If user exist first
+
         GameList gamesPlayedByUser = gameDao.find(gamePlayed.getUserId());
 
         if(gamesPlayedByUser == null) gamesPlayedByUser = new GameList();
@@ -54,7 +57,7 @@ public class GameService {
 
         if(gamesPlayedByUser == null) return false;
 
-        gamesPlayedByUser.removeGameFromList(gameId);
+        if(!gamesPlayedByUser.removeGameFromList(gameId)) return false;
 
         return gameDao.save(userId, gamesPlayedByUser);
     }
@@ -88,6 +91,9 @@ public class GameService {
         return gamesPlayedByUser.getGameList();
     }
 
+    public List<User> getTopUsers() {
+        return null;
+    }
 
     /**
      * Updates the time improvement for the game identified by the provided game ID.
