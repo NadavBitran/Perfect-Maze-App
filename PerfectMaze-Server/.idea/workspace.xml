@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="99824e4e-e4ba-4032-ad7e-21037c36abee" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/artifacts/Programming_In_The_Internet_Environment_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/libraries/junit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/libraries/junit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/AlgorithmicUnit.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/AbstractShortestPaths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/DFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/IShortestPaths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/AdjacencyList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/UndirectedGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/util/UndirectedGraphCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/DFSTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/IShortestPathsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/Programming In The Internet Environment.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/Programming-In-The-Internet-Environment.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2dE9hsab9SBmMxQR3GTWruUiM91" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nadav\OneDrive\Desktop\PerfectMaze\PerfectMaze\lib" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="99824e4e-e4ba-4032-ad7e-21037c36abee" name="Changes" comment="" />
+      <created>1709562492789</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709562492789</updated>
+    </task>
+    <servers />
+  </component>
+</project>
