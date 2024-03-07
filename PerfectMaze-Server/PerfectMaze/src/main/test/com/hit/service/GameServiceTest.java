@@ -23,8 +23,8 @@ public class GameServiceTest implements IServiceTest {
         PerfectMazeBoard maze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE);
 
         Assert.assertNotNull(maze);
-        Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 - 1, maze.getRows());
-        Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 - 1, maze.getColumns());
+        Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 + 1 , maze.getRowsWithWalls());
+        Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 + 1, maze.getColsWithWalls());
     }
 
     @Test

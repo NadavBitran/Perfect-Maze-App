@@ -11,7 +11,6 @@ public class Program {
     public static void main(String[] args) {
         gameServiceGeneralFlow();
     }
-
     public static void gameServiceGeneralFlow()
     {
         // STEP 0. Client logs in

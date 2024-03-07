@@ -14,24 +14,45 @@ public class PerfectMazeBoard implements Serializable {
     private int rows;
     private int columns;
 
+    private int rowsWithWalls;
+    private int colsWithWalls;
+
     /**
      * Constructs a PerfectMazeBoard with provided maze and size.
      *
      * @param maze     The maze represented as a 2D array of integers.
      * @param mazeSize The size of the maze.
      */
-    public PerfectMazeBoard(int[][] maze, int mazeSize) {
+    public PerfectMazeBoard(int[][] maze, int mazeSize, Point endingLocation) {
         this.maze = maze;
         this.startingLocation = new Point(0, 0);
-        this.endingLocation = new Point(mazeSize - 1, (int) (Math.random() * mazeSize));
+        this.endingLocation = endingLocation;
         this.rows = mazeSize;
         this.columns = mazeSize;
+        this.rowsWithWalls = mazeSize*2 + 1;
+        this.colsWithWalls = mazeSize*2 + 1;
     }
 
     /**
      * Constructs an empty PerfectMazeBoard.
      */
     public PerfectMazeBoard() {
+    }
+
+    public int getRowsWithWalls() {
+        return rowsWithWalls;
+    }
+
+    public void setRowsWithWalls(int rowsWithWalls) {
+        this.rowsWithWalls = rowsWithWalls;
+    }
+
+    public int getColsWithWalls() {
+        return colsWithWalls;
+    }
+
+    public void setColsWithWalls(int colsWithWalls) {
+        this.colsWithWalls = colsWithWalls;
     }
 
     public int getRows() {
