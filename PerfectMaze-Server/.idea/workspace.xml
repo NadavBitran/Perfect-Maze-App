@@ -5,36 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99824e4e-e4ba-4032-ad7e-21037c36abee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/artifacts/Programming_In_The_Internet_Environment_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/libraries/junit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/libraries/junit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/AlgorithmicUnit.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/AbstractShortestPaths.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/DFS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/IShortestPaths.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/AdjacencyList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/undirectedGraph/UndirectedGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/util/UndirectedGraphCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/DFSTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/IShortestPathsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/Programming In The Internet Environment.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/Programming-In-The-Internet-Environment.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/lib/AlgorithmModule.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/lib/AlgorithmModule.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +40,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nadav\OneDrive\Desktop\PerfectMaze\PerfectMaze\lib" />

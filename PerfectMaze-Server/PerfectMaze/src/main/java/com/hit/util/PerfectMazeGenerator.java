@@ -4,6 +4,7 @@ import com.hit.dm.PerfectMazeBoard;
 import com.hit.undirectedGraph.Edge;
 import com.hit.undirectedGraph.UndirectedGraph;
 
+import java.awt.*;
 import java.util.Arrays;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Arrays;
  */
 public class PerfectMazeGenerator {
 
-    private static final int MAZE_MIN_SIZE = 5;
+    private static final int MAZE_MIN_SIZE = 3;
     private static final int MAZE_MAX_SIZE = 50;
 
     /**
@@ -24,29 +25,34 @@ public class PerfectMazeGenerator {
     public static PerfectMazeBoard generateMazeFromSpanningTree(UndirectedGraph<Integer> spanningTree, int mazeSize) {
         if (spanningTree == null || !isMazeSizeValid(mazeSize)) return null;
 
-        int[][] perfectMaze = new int[2 * mazeSize - 1][2 * mazeSize - 1];
+        int[][] perfectMaze = new int[2 * mazeSize + 1][2 * mazeSize + 1];
 
-        for (int i = 0; i < 2 * mazeSize - 1; i++) {
+        for (int i = 0; i < 2 * mazeSize + 1; i++) {
             Arrays.fill(perfectMaze[i], 0);
         }
 
         for (int i = 0; i < mazeSize; i++) {
             for (int j = 0; j < mazeSize; j++) {
-                perfectMaze[2 * i][2 * j] = 1;
+                perfectMaze[2 * i + 1][2 * j + 1] = 1;
 
                 int nodeIndex = i * mazeSize + j;
 
                 if (spanningTree.getAdjacencyList(nodeIndex).isContainsEdge(new Edge(nodeIndex, nodeIndex + 1))) {
-                    perfectMaze[2 * i][2 * j + 1] = 1;
+                    perfectMaze[2 * i + 1][2 * (j + 1)] = 1;
                 }
 
                 if (spanningTree.getAdjacencyList(nodeIndex).isContainsEdge(new Edge(nodeIndex, nodeIndex + mazeSize))) {
-                    perfectMaze[2 * i + 1][2 * j] = 1;
+                    perfectMaze[2 * (i + 1)][2 * j + 1] = 1;
                 }
             }
         }
 
-        return new PerfectMazeBoard(perfectMaze, mazeSize);
+        Point generatedEndingMazeLocation = new Point(2*mazeSize , (int)(Math.random() * mazeSize) * 2 + 1);
+
+        perfectMaze[generatedEndingMazeLocation.x][generatedEndingMazeLocation.y] = 1;
+        perfectMaze[0][1] = 1;
+
+        return new PerfectMazeBoard(perfectMaze, mazeSize, generatedEndingMazeLocation);
     }
 
     /**
