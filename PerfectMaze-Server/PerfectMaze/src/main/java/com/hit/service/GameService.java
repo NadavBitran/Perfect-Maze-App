@@ -1,6 +1,7 @@
 package com.hit.service;
 
 import com.hit.algorithm.DFS;
+import com.hit.algorithm.IShortestPaths;
 import com.hit.dao.Dao;
 import com.hit.dm.Game;
 import com.hit.dm.GameList;
@@ -19,12 +20,18 @@ import java.util.List;
 public class GameService {
 
     private Dao<GameList> gameDao;
+    private IShortestPaths<Integer> shortestPathAlgorithm;
 
     /**
      * Constructs a GameService with a default Dao instance.
      */
     public GameService(String filePath) {
         this.gameDao = new Dao<>(filePath);
+    }
+
+    public GameService(String filePath, IShortestPaths<Integer> shortestPathAlgorithm) {
+        this.gameDao = new Dao<>(filePath);
+        this.shortestPathAlgorithm = shortestPathAlgorithm;
     }
 
     /**
@@ -91,7 +98,7 @@ public class GameService {
         return gamesPlayedByUser.getGameList();
     }
 
-    public List<User> getTopUsers() {
+    public List<User> getLeaderboards() {
         return null;
     }
 
@@ -130,11 +137,7 @@ public class GameService {
     public PerfectMazeBoard generateMaze(int mazeSize) {
         if (!PerfectMazeGenerator.isMazeSizeValid(mazeSize)) return null;
 
-        UndirectedGraph<Integer> gridGraph = UndirectedGraphCreator.createNxNGridGraph(mazeSize);
-
-        DFS<Integer> dfs = new DFS<>(gridGraph);
-
-        UndirectedGraph<Integer> spanningTree = dfs.run();
+        UndirectedGraph<Integer> spanningTree = shortestPathAlgorithm.run();
 
         return PerfectMazeGenerator.generateMazeFromSpanningTree(spanningTree, mazeSize);
     }

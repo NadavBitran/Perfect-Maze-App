@@ -13,7 +13,6 @@ public class PerfectMazeBoard implements Serializable {
     private Point endingLocation;
     private int rows;
     private int columns;
-
     private int rowsWithWalls;
     private int colsWithWalls;
 

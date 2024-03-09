@@ -21,7 +21,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @param file The name of the file to be used for storing data.
      */
     public Dao(String file) {
-        this.filePath = "PerfectMaze/src/main/resources/" + file;
+        this.filePath = file;
 
         try {
             if (!this.isFileExists(filePath)) {

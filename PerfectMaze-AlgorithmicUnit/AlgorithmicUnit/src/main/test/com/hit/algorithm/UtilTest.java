@@ -10,7 +10,7 @@ class UtilTest {
     /**
      * Starting node index for DFS algorithm testing.
      */
-    static final int STARTING_NODE_INDEX = 50;
+    static final int STARTING_NODE_INDEX = 0;
 
     /**
      * Test length for grid graph.
