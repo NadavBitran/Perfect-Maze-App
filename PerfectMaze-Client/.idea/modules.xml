@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PerfectMaze-Server.iml" filepath="$PROJECT_DIR$/PerfectMaze-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PerfectMaze-Client.iml" filepath="$PROJECT_DIR$/.idea/PerfectMaze-Client.iml" />
     </modules>
   </component>
 </project>

@@ -1,5 +1,7 @@
 package com.hit.dao;
 
+import com.hit.util.ServiceRequestFailedException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,16 +25,15 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
     public Dao(String file) {
         this.filePath = file;
 
-        try {
-            if (!this.isFileExists(filePath)) {
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath));
+        if (!this.isFileExists(filePath)) {
+
+            try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath))) {
                 objectOutputStream.writeObject(new HashMap<String, TValue>());
                 objectOutputStream.flush();
-                objectOutputStream.close();
             }
-
-        } catch (IOException e) {
-            System.out.println("Failed to open file for the first time: " + filePath);
+            catch (IOException e) {
+                System.out.println("Error in dao: " + e.getMessage());
+            }
         }
     }
 
@@ -44,25 +45,33 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully saved, {@code false} otherwise.
      */
     @Override
-    public boolean save(String tKey, TValue tValue) {
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
-            Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
-            objectInputStream.close();
+    public void save(String tKey, TValue tValue) throws ServiceRequestFailedException {
 
+        Map<String, TValue> entities = null;
+
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
+        {
+
+            entities = (HashMap<String, TValue>) objectInputStream.readObject();
             entities.put(tKey, tValue);
 
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath));
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            throw new ServiceRequestFailedException("Failed due to repository error");
+        }
+
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath)))
+        {
             objectOutputStream.writeObject(entities);
             objectOutputStream.flush();
-            objectOutputStream.close();
-
-            return true;
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error in dao: " + e.getMessage());
-            return false;
+        }
+        catch (IOException e)
+        {
+            throw new ServiceRequestFailedException("Failed due to repository error");
         }
     }
+
 
     /**
      * Deletes the entity identified by the provided key from the file.
@@ -71,24 +80,32 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully deleted, {@code false} otherwise.
      */
     @Override
-    public boolean delete(String tKey) {
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
-            Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
-            objectInputStream.close();
+    public boolean delete(String tKey) throws ServiceRequestFailedException {
 
-            entities.remove(tKey);
+        Map<String, TValue> entities = null;
 
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath));
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
+        {
+            entities = (HashMap<String, TValue>) objectInputStream.readObject();
+
+            if (entities.remove(tKey) == null)
+            {
+                return false;
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            throw new ServiceRequestFailedException("Failed due to repository error");
+        }
+
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath)))
+        {
             objectOutputStream.writeObject(entities);
             objectOutputStream.flush();
-            objectOutputStream.close();
-
-            return true;
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error in dao: " + e.getMessage());
-            return false;
+        } catch (IOException e) {
+            throw new ServiceRequestFailedException("Failed due to repository error");
         }
+
+        return true;
     }
 
     /**
@@ -98,16 +115,42 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return The entity identified by the provided key, or {@code null} if not found.
      */
     @Override
-    public TValue find(String tKey) {
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
+    public TValue find(String tKey) throws ServiceRequestFailedException {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
+        {
             Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
-            objectInputStream.close();
 
             return entities.get(tKey);
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error in dao: " + e.getMessage());
-            return null;
+            throw new ServiceRequestFailedException("Failed due to repository error");
+        }
+    }
+
+    @Override
+    public List<TValue> findAll() throws ServiceRequestFailedException
+    {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
+        {
+            Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
+
+            return new ArrayList<>(entities.values());
+
+        } catch (IOException | ClassNotFoundException e) {
+            throw new ServiceRequestFailedException("Failed due to repository error");
+        }
+    }
+
+    @Override
+    public Map<String, TValue> getMap() throws ServiceRequestFailedException
+    {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
+        {
+            Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
+
+            return entities;
+
+        } catch (IOException | ClassNotFoundException e) {
+            throw new ServiceRequestFailedException("Failed due to repository error");
         }
     }
 
@@ -121,4 +164,5 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
         File file = new File(filePath);
         return file.exists();
     }
+
 }

@@ -12,6 +12,7 @@ public class Game implements Serializable {
     private PerfectMazeBoard mazeBoard;
     private int timeToSolve;
     private String userId;
+    private String userEmail;
 
     /**
      * Constructs a new Game instance with the provided parameters.
@@ -20,11 +21,12 @@ public class Game implements Serializable {
      * @param timeToSolve      The time taken to solve the maze.
      * @param userId           The unique identifier of the user associated with the game.
      */
-    public Game(PerfectMazeBoard mazeBoard, int timeToSolve, String userId) {
+    public Game(PerfectMazeBoard mazeBoard, int timeToSolve, String userId, String userEmail) {
         this.gameId = UUID.randomUUID().toString();
         this.mazeBoard = mazeBoard;
         this.timeToSolve = timeToSolve;
         this.userId = userId;
+        this.userEmail = userEmail;
     }
 
     public Game() {
@@ -63,6 +65,14 @@ public class Game implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     // Equals, hashCode, and toString methods
