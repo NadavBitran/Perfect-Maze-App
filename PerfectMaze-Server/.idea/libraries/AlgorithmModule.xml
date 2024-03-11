@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AlgorithmModule">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PerfectMaze/lib/AlgorithmModule.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

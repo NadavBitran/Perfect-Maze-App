@@ -4,30 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99824e4e-e4ba-4032-ad7e-21037c36abee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/java/com/hit/algorithm/BFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-AlgorithmicUnit/AlgorithmicUnit/src/main/test/com/hit/algorithm/UtilTest.java" afterDir="false" />
+    <list default="true" id="a70b303d-85fb-448f-8640-5a64edb54fae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/PerfectMaze-Client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/AlgorithmModule.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mindrot_jbcrypt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/LeaderboardServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/lib/AlgorithmModule.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/lib/AlgorithmModule.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze-Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze-Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/IDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dao/IDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/GameList.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/GameList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/IServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/IServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -35,7 +37,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2dE9hsab9SBmMxQR3GTWruUiM91" />
+  <component name="ProjectId" id="2dYEuTvabUdXQ2och2j24wNxaDC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,26 +51,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nadav\OneDrive\Desktop\PerfectMaze\PerfectMaze\lib" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="99824e4e-e4ba-4032-ad7e-21037c36abee" name="Changes" comment="" />
-      <created>1709562492789</created>
+      <changelist id="a70b303d-85fb-448f-8640-5a64edb54fae" name="Changes" comment="" />
+      <created>1710176833877</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1709562492789</updated>
+      <updated>1710176833877</updated>
     </task>
     <servers />
   </component>

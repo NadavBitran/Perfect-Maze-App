@@ -8,13 +8,22 @@ import java.util.Map;
 
 public class GameList implements Serializable {
     private Map<String, Game> gameList;
+    private String userId;
+    private String userEmail;
 
     public GameList() {
-        this.gameList = new HashMap<>();
     }
 
-    public GameList(Map<String, Game> gameList) {
+    public GameList(String userId, String userEmail) {
+        this.gameList = new HashMap<>();
+        this.userId = userId;
+        this.userEmail = userEmail;
+    }
+
+    public GameList(Map<String, Game> gameList, String userId, String userEmail) {
         this.gameList = gameList;
+        this.userId = userId;
+        this.userEmail = userEmail;
     }
 
     public Game getGameFromList(String gameId) {
@@ -36,4 +45,8 @@ public class GameList implements Serializable {
     public int getGamesCount() {
         return gameList.size();
     }
+
+    public String getUserId() {return userId;}
+    public String getUserEmail() {return userEmail;}
+
 }
