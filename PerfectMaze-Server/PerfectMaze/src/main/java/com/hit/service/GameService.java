@@ -36,7 +36,7 @@ public class GameService {
      * @param gamePlayed The game to be saved.
      * @return {@code true} if the game was successfully saved, {@code false} otherwise.
      */
-    public synchronized Game saveGame(Game gamePlayed) throws ServiceRequestFailedException {
+    public Game saveGame(Game gamePlayed) throws ServiceRequestFailedException {
         if(!GameUtils.isGamePropertiesExistValid(gamePlayed))
             throw new ServiceRequestFailedException("Failed to save game: game properties are does not exist");
 
@@ -68,7 +68,7 @@ public class GameService {
      * @param userId The unique identifier of the user associated with the game.
      * @return {@code true} if the game was successfully deleted, {@code false} otherwise.
      */
-    public synchronized void deleteGame(String userId, String gameId) throws ServiceRequestFailedException  {
+    public void deleteGame(String userId, String gameId) throws ServiceRequestFailedException  {
         if(gameId == null) throw new ServiceRequestFailedException("Failed to delete game: no gameId provided");
         if(userId == null) throw new ServiceRequestFailedException("Failed to delete game: no userId provided");
 
@@ -90,7 +90,7 @@ public class GameService {
      * @param userId The unique identifier of the user associated with the game.
      * @return The game identified by the provided game ID, or {@code null} if not found.
      */
-    public synchronized Game getGame(String userId, String gameId) throws ServiceRequestFailedException {
+    public Game getGame(String userId, String gameId) throws ServiceRequestFailedException {
         if(gameId == null) throw new ServiceRequestFailedException("Failed to get game: no gameId provided");
         if(userId == null) throw new ServiceRequestFailedException("Failed to get game: no userId provided");
 
@@ -113,7 +113,7 @@ public class GameService {
      * @param userId The unique identifier of the user associated with the games.
      * @return A list of all games played by the user, or {@code null} if the user has not played any games.
      */
-    public synchronized List<Game> getAllGamesOfUser(String userId) throws ServiceRequestFailedException {
+    public List<Game> getAllGamesOfUser(String userId) throws ServiceRequestFailedException {
         if(userId == null) throw new ServiceRequestFailedException("Failed to get games played by user: no userId provided");
 
         GameList gamesPlayedByUser = gameDao.find(userId);
@@ -132,7 +132,7 @@ public class GameService {
      * @param newTime The new time value for the game.
      * @return {@code true} if the time improvement was successfully updated, {@code false} otherwise.
      */
-    public synchronized void updateGameTimeImprovement(String userId, String gameId, int newTime) throws ServiceRequestFailedException {
+    public void updateGameTimeImprovement(String userId, String gameId, int newTime) throws ServiceRequestFailedException {
         if(gameId == null) throw new ServiceRequestFailedException("Failed to update game: no gameId provided");
         if(userId == null) throw new ServiceRequestFailedException("Failed to update game: no userId provided");
 

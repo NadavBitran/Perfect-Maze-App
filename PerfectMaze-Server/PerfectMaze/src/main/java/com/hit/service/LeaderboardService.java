@@ -24,7 +24,7 @@ public class LeaderboardService {
         this.userDao = userDao;
     }
 
-    public synchronized Leaderboards getLeaderboards() throws ServiceRequestFailedException {
+    public Leaderboards getLeaderboards() throws ServiceRequestFailedException {
         List<GameList> allGames = gameDao.findAll();
 
         allGames.sort(new Comparator<GameList>() {

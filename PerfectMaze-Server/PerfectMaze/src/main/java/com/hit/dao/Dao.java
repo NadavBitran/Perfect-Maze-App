@@ -45,7 +45,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully saved, {@code false} otherwise.
      */
     @Override
-    public void save(String tKey, TValue tValue) throws ServiceRequestFailedException {
+    public synchronized void save(String tKey, TValue tValue) throws ServiceRequestFailedException {
 
         Map<String, TValue> entities = null;
 
@@ -80,7 +80,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully deleted, {@code false} otherwise.
      */
     @Override
-    public boolean delete(String tKey) throws ServiceRequestFailedException {
+    public synchronized boolean delete(String tKey) throws ServiceRequestFailedException {
 
         Map<String, TValue> entities = null;
 
@@ -115,7 +115,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return The entity identified by the provided key, or {@code null} if not found.
      */
     @Override
-    public TValue find(String tKey) throws ServiceRequestFailedException {
+    public synchronized TValue find(String tKey) throws ServiceRequestFailedException {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {
             Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
@@ -127,7 +127,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
     }
 
     @Override
-    public List<TValue> findAll() throws ServiceRequestFailedException
+    public synchronized List<TValue> findAll() throws ServiceRequestFailedException
     {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {
@@ -141,7 +141,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
     }
 
     @Override
-    public Map<String, TValue> getMap() throws ServiceRequestFailedException
+    public synchronized Map<String, TValue> getMap() throws ServiceRequestFailedException
     {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {

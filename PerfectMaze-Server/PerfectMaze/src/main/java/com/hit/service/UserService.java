@@ -21,7 +21,7 @@ public class UserService {
         this.userGameFile = userDao.getFilePath();
     }
 
-    public synchronized String register(String email, String password, String username) throws ServiceRequestFailedException {
+    public String register(String email, String password, String username) throws ServiceRequestFailedException {
         if(email == null) throw new ServiceRequestFailedException("Failed to register: no email provided");
         if(password == null) throw new ServiceRequestFailedException("Failed to register: no password provided");
         if(username == null) throw new ServiceRequestFailedException("Failed to register: no username provided");
@@ -38,7 +38,7 @@ public class UserService {
         return newUser.getUserId();
     }
 
-    public synchronized String login(String email, String password) throws ServiceRequestFailedException {
+    public String login(String email, String password) throws ServiceRequestFailedException {
         if(email == null) throw new ServiceRequestFailedException("Failed to login: no email provided");
         if(password == null) throw new ServiceRequestFailedException("Failed to login: no password provided");
 
@@ -53,7 +53,7 @@ public class UserService {
         return existingUser.getUserId();
     }
 
-    public synchronized User getUser(String email) throws ServiceRequestFailedException {
+    public User getUser(String email) throws ServiceRequestFailedException {
         if(email == null) throw new ServiceRequestFailedException("Failed to retrieve user: no email provided");
 
         User user = userDao.find(email);
@@ -64,7 +64,7 @@ public class UserService {
         return user;
     }
 
-    public synchronized void deleteUser(String email, String userId) throws ServiceRequestFailedException{
+    public void deleteUser(String email, String userId) throws ServiceRequestFailedException{
         if(email == null) throw new ServiceRequestFailedException("Failed to delete user: no email provided");
         if(userId == null) throw new ServiceRequestFailedException("Failed to delete user: no userId provided");
 
