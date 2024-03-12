@@ -6,7 +6,7 @@ import com.hit.dm.User;
 
 
 import com.hit.service.util.RollbackDaoUtil;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 
@@ -21,15 +21,15 @@ public class UserService {
         this.userGameFile = userDao.getFilePath();
     }
 
-    public String register(String email, String password, String username) throws ServiceRequestFailedException {
-        if(email == null) throw new ServiceRequestFailedException("Failed to register: no email provided");
-        if(password == null) throw new ServiceRequestFailedException("Failed to register: no password provided");
-        if(username == null) throw new ServiceRequestFailedException("Failed to register: no username provided");
+    public String register(String email, String password, String username) throws ServiceRequestFailed {
+        if(email == null) throw new ServiceRequestFailed("Failed to register: no email provided");
+        if(password == null) throw new ServiceRequestFailed("Failed to register: no password provided");
+        if(username == null) throw new ServiceRequestFailed("Failed to register: no username provided");
 
         User existingUser = userDao.find(email);
 
         if (existingUser != null)
-            throw new ServiceRequestFailedException("Failed to register: user with email " + email + " already exists");
+            throw new ServiceRequestFailed("Failed to register: user with email " + email + " already exists");
 
         User newUser = new User(email, hashPassword(password), username);
 
@@ -38,35 +38,35 @@ public class UserService {
         return newUser.getUserId();
     }
 
-    public String login(String email, String password) throws ServiceRequestFailedException {
-        if(email == null) throw new ServiceRequestFailedException("Failed to login: no email provided");
-        if(password == null) throw new ServiceRequestFailedException("Failed to login: no password provided");
+    public String login(String email, String password) throws ServiceRequestFailed {
+        if(email == null) throw new ServiceRequestFailed("Failed to login: no email provided");
+        if(password == null) throw new ServiceRequestFailed("Failed to login: no password provided");
 
         User existingUser = userDao.find(email);
 
         if (existingUser == null)
-            throw new ServiceRequestFailedException("Failed to login: invalid credentials");
+            throw new ServiceRequestFailed("Failed to login: invalid credentials");
 
         if (!verifyPassword(password, existingUser.getPassword()))
-            throw new ServiceRequestFailedException("Failed to login: invalid credentials");
+            throw new ServiceRequestFailed("Failed to login: invalid credentials");
 
         return existingUser.getUserId();
     }
 
-    public User getUser(String email) throws ServiceRequestFailedException {
-        if(email == null) throw new ServiceRequestFailedException("Failed to retrieve user: no email provided");
+    public User getUser(String email) throws ServiceRequestFailed {
+        if(email == null) throw new ServiceRequestFailed("Failed to retrieve user: no email provided");
 
         User user = userDao.find(email);
 
         if(user == null)
-            throw new ServiceRequestFailedException("Failed to retrieve user with email " + email + ": user doesnt exist");
+            throw new ServiceRequestFailed("Failed to retrieve user with email " + email + ": user doesnt exist");
 
         return user;
     }
 
-    public void deleteUser(String email, String userId) throws ServiceRequestFailedException{
-        if(email == null) throw new ServiceRequestFailedException("Failed to delete user: no email provided");
-        if(userId == null) throw new ServiceRequestFailedException("Failed to delete user: no userId provided");
+    public synchronized void deleteUser(String email, String userId) throws ServiceRequestFailed {
+        if(email == null) throw new ServiceRequestFailed("Failed to delete user: no email provided");
+        if(userId == null) throw new ServiceRequestFailed("Failed to delete user: no userId provided");
 
         try
         {
@@ -74,13 +74,13 @@ public class UserService {
         }
         catch(IOException e)
         {
-            throw new ServiceRequestFailedException("Failed to delete user with email: " + email + ": failed to create backup file");
+            throw new ServiceRequestFailed("Failed to delete user with email: " + email + ": failed to create backup file");
         }
 
         if(!userDao.delete(email))
         {
             RollbackDaoUtil.resetRollbackProperties();
-            throw new ServiceRequestFailedException("Failed to delete user with email: " + email + ": user doesn't exist");
+            throw new ServiceRequestFailed("Failed to delete user with email: " + email + ": user doesn't exist");
         }
 
         RollbackDaoUtil.startTaskWithCaution(

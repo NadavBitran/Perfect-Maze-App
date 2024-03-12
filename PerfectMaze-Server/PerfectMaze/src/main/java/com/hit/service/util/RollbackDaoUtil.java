@@ -1,6 +1,6 @@
 package com.hit.service.util;
 
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,16 +12,16 @@ public class RollbackDaoUtil {
     private static File backUpFile;
     private static String originalFilePath;
 
-    public static void startTaskWithCaution(ICallback callback, String onRollbackError) throws ServiceRequestFailedException {
+    public static void startTaskWithCaution(ICallback callback, String onRollbackError) throws ServiceRequestFailed {
         try
         {
             callback.execute();
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             try {
                 tryCommittingRollback();
             } catch (IOException ex) {
-                throw new ServiceRequestFailedException(onRollbackError);
+                throw new ServiceRequestFailed(onRollbackError);
             }
         }
         finally {

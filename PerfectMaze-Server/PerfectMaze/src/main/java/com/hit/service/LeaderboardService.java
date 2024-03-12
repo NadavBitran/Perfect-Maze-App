@@ -5,7 +5,7 @@ import com.hit.dm.GameList;
 import com.hit.dm.Leaderboards;
 import com.hit.dm.User;
 import com.hit.dm.LeaderboardsEntity;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +24,7 @@ public class LeaderboardService {
         this.userDao = userDao;
     }
 
-    public Leaderboards getLeaderboards() throws ServiceRequestFailedException {
+    public Leaderboards getLeaderboards() throws ServiceRequestFailed {
         List<GameList> allGames = gameDao.findAll();
 
         allGames.sort(new Comparator<GameList>() {
@@ -42,6 +42,7 @@ public class LeaderboardService {
 
         for (int i=0;i<leaderboardsSize;i++) {
             User user = users.get(allGames.get(i).getUserEmail());
+            if(user == null) continue;
             topUsers.add(new LeaderboardsEntity(
                     user.getUserId(),
                     user.getUsername(),

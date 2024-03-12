@@ -14,7 +14,7 @@ import java.net.Socket;
 import java.nio.Buffer;
 import java.util.Scanner;
 
-public class HandleRequest {
+public class HandleRequest implements Runnable {
 
     private Gson gson = new GsonBuilder().create();
     private Socket cilentSocket;
@@ -23,7 +23,8 @@ public class HandleRequest {
         this.cilentSocket = clientSocket;
     }
 
-    public void process() {
+    @Override
+    public void run() {
         try (Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(cilentSocket.getInputStream())));
              PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(cilentSocket.getOutputStream())))) {
 
@@ -61,6 +62,7 @@ public class HandleRequest {
             e.printStackTrace();
         }
     }
+
     private void closeSocket() throws IOException
     {
         cilentSocket.close();

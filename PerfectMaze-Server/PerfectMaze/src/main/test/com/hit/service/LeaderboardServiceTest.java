@@ -4,7 +4,7 @@ import com.hit.algorithm.DFS;
 import com.hit.algorithm.IShortestPaths;
 import com.hit.dao.Dao;
 import com.hit.dm.*;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import com.hit.util.UndirectedGraphCreator;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
@@ -29,7 +29,7 @@ public class LeaderboardServiceTest implements IServiceTest{
     public ExpectedException exceptionRule = ExpectedException.none();
     @Override
     @Test
-    public void checkEntityAdditionSuccess() throws ServiceRequestFailedException {
+    public void checkEntityAdditionSuccess() throws ServiceRequestFailed {
         gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
 
         leaderboardsTest = leaderboardServiceTest.getLeaderboards();
@@ -40,20 +40,20 @@ public class LeaderboardServiceTest implements IServiceTest{
 
     @Override
     @Test
-    public void checkEntityRetrievalSuccess() throws ServiceRequestFailedException {
+    public void checkEntityRetrievalSuccess() throws ServiceRequestFailed {
         Assert.assertEquals(VALID_USER_ID, leaderboardsTest.getTopUser().getUserId());
         Assert.assertEquals(4, leaderboardsTest.getTopUser().getGamesCount());
     }
 
     @Override
     @Test(expected = IndexOutOfBoundsException.class)
-    public void checkEntityRetrievalFailure() throws ServiceRequestFailedException {
+    public void checkEntityRetrievalFailure() throws ServiceRequestFailed {
         Assert.assertNull(leaderboardsTest.getUserByLocation(1));
     }
 
     @Override
     @Test(expected = IndexOutOfBoundsException.class)
-    public void checkEntityDeletionSuccess() throws ServiceRequestFailedException {
+    public void checkEntityDeletionSuccess() throws ServiceRequestFailed {
         userServiceTest.deleteUser(VALID_USER_EMAIL, VALID_USER_ID);
 
         leaderboardsTest = leaderboardServiceTest.getLeaderboards();
@@ -62,7 +62,7 @@ public class LeaderboardServiceTest implements IServiceTest{
     }
 
     @Before
-    public void setup() throws ServiceRequestFailedException {
+    public void setup() throws ServiceRequestFailed {
 
         gameListDao = new Dao<>(UtilTest.GAME_TEST_FILE);
 
@@ -101,7 +101,7 @@ public class LeaderboardServiceTest implements IServiceTest{
         Assert.assertFalse(userFile.exists());
     }
 
-    private void addFakeGamesToRegisteredUser() throws ServiceRequestFailedException {
+    private void addFakeGamesToRegisteredUser() throws ServiceRequestFailed {
         gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
         gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 90, VALID_USER_ID, VALID_USER_EMAIL));
         gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 80, VALID_USER_ID, VALID_USER_EMAIL));

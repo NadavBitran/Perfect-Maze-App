@@ -1,9 +1,8 @@
 package com.hit.controller;
 
-import com.google.gson.JsonElement;
 import com.hit.dm.Leaderboards;
 import com.hit.exceptions.ControllerRoutingFailed;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import com.hit.server.Request;
 import com.hit.server.Response;
 import com.hit.server.util.ResponseUtils;
@@ -39,7 +38,7 @@ public class LeaderboardsController implements IController {
             Leaderboards leaderboards = leaderboardService.getLeaderboards();
             response = ResponseUtils.buildResponse("Leaderboard retrieved", "success", "leaderboards", leaderboards);
         }
-        catch(ServiceRequestFailedException e)
+        catch(ServiceRequestFailed e)
         {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }

@@ -7,16 +7,12 @@ import com.hit.dm.Game;
 import com.hit.dm.GameList;
 import com.hit.dm.PerfectMazeBoard;
 import com.hit.dm.User;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import com.hit.util.UndirectedGraphCreator;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 public class GameServiceTest implements IServiceTest {
@@ -43,7 +39,7 @@ public class GameServiceTest implements IServiceTest {
 
 
     @Before
-    public void setup() throws ServiceRequestFailedException {
+    public void setup() throws ServiceRequestFailed {
         gameListDao = new Dao<>(UtilTest.GAME_TEST_FILE);
         userDao = new Dao<>(UtilTest.USER_TEST_FILE);
 
@@ -72,7 +68,7 @@ public class GameServiceTest implements IServiceTest {
     }
 
     @Test
-    public void checkMazeGenerationSuccess() throws ServiceRequestFailedException {
+    public void checkMazeGenerationSuccess() throws ServiceRequestFailed {
         generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
 
         Assert.assertNotNull(generatedMaze);
@@ -80,14 +76,14 @@ public class GameServiceTest implements IServiceTest {
         Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 + 1, generatedMaze.getColsWithWalls());
     }
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkMazeGenerationFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkMazeGenerationFailure() throws ServiceRequestFailed {
         generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE_TOO_SMALL, shortestPathTestAlgorithm);
     }
 
     @Override
     @Test
-    public void checkEntityAdditionSuccess() throws ServiceRequestFailedException {
+    public void checkEntityAdditionSuccess() throws ServiceRequestFailed {
         generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
 
         Game detailsOfGameToSave = new Game(generatedMaze, TIME_TO_SOLVE_MAZE, VALID_USER_ID, VALID_USER_EMAIL);
@@ -101,34 +97,34 @@ public class GameServiceTest implements IServiceTest {
 
     @Override
     @Test
-    public void checkEntityRetrievalSuccess() throws ServiceRequestFailedException {
+    public void checkEntityRetrievalSuccess() throws ServiceRequestFailed {
         Game game = gameServiceTest.getGame(VALID_USER_ID, newGame.getGameId());
 
         Assert.assertEquals(newGame, game);
     }
 
     @Override
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityRetrievalFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityRetrievalFailure() throws ServiceRequestFailed {
         gameServiceTest.getGame(VALID_USER_ID, UtilTest.INVALID_GAME_ID);
     }
 
     @Override
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityDeletionSuccess() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityDeletionSuccess() throws ServiceRequestFailed {
         gameServiceTest.deleteGame(VALID_USER_ID, newGame.getGameId());
 
         gameServiceTest.getGame(VALID_USER_ID, newGame.getGameId());
     }
 
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityDeletionFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityDeletionFailure() throws ServiceRequestFailed {
         gameServiceTest.deleteGame(VALID_USER_ID, UtilTest.INVALID_GAME_ID);
     }
 
     @Test
-    public void checkGameListRetrievalSuccess() throws ServiceRequestFailedException {
+    public void checkGameListRetrievalSuccess() throws ServiceRequestFailed {
 
         PerfectMazeBoard secondMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
 
@@ -143,20 +139,20 @@ public class GameServiceTest implements IServiceTest {
         Assert.assertEquals(2, gamesOfUser.size());
     }
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkGameListRetrievalFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkGameListRetrievalFailure() throws ServiceRequestFailed {
         gameServiceTest.getAllGamesOfUser(UtilTest.INVALID_USER_ID);
     }
 
     @Test
-    public void checkUpdateGetTimeImprovementSuccess() throws ServiceRequestFailedException {
+    public void checkUpdateGetTimeImprovementSuccess() throws ServiceRequestFailed {
         gameServiceTest.updateGameTimeImprovement(VALID_USER_ID, newGame.getGameId(), TIME_TO_SOLVE_MAZE_IMPROVED);
 
         Assert.assertEquals(gameServiceTest.getGame(VALID_USER_ID, newGame.getGameId()).getTimeToSolve(), TIME_TO_SOLVE_MAZE_IMPROVED);
     }
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkUpdateGetTimeImprovementFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkUpdateGetTimeImprovementFailure() throws ServiceRequestFailed {
         gameServiceTest.updateGameTimeImprovement(VALID_USER_ID, newGame.getGameId(), TIME_TO_SOLVE_MAZE_IMPROVED_ERROR);
     }
 

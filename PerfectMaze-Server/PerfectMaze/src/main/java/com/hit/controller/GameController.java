@@ -1,7 +1,6 @@
 package com.hit.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.hit.algorithm.BFS;
@@ -11,7 +10,7 @@ import com.hit.dm.Game;
 import com.hit.dm.PerfectMazeBoard;
 import com.hit.dm.User;
 import com.hit.exceptions.ControllerRoutingFailed;
-import com.hit.exceptions.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import com.hit.server.Request;
 import com.hit.server.Response;
 import com.hit.server.util.ResponseUtils;
@@ -61,7 +60,7 @@ public class GameController implements IController {
             gameService.saveGame(game);
             response = ResponseUtils.buildResponse("Game saved successfully", "success", "gameId", game.getGameId());
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
@@ -78,7 +77,7 @@ public class GameController implements IController {
             gameService.deleteGame(game.getUserId(), game.getGameId());
             response = ResponseUtils.buildResponse("Game deleted successfully", "success");
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
@@ -96,7 +95,7 @@ public class GameController implements IController {
             Game loadedGame = gameService.getGame(game.getUserId(), game.getGameId());
             response = ResponseUtils.buildResponse("Game loaded successfully", "success", "game", loadedGame);
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
@@ -113,7 +112,7 @@ public class GameController implements IController {
             List<Game> games = gameService.getAllGamesOfUser(user.getUserId());
             response = ResponseUtils.buildResponse("Games loaded successfully", "success", "games", games);
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
@@ -130,7 +129,7 @@ public class GameController implements IController {
             gameService.updateGameTimeImprovement(game.getUserId(), game.getGameId(), game.getTimeToSolve());
             response = ResponseUtils.buildResponse("Game time updated successfully", "success");
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
@@ -167,7 +166,7 @@ public class GameController implements IController {
             PerfectMazeBoard maze = gameService.generateMaze(dataAboutMaze.getRows(), algorithm);
             response = ResponseUtils.buildResponse("Maze generated successfully", "success", "mazeBoard", maze);
         }
-        catch (ServiceRequestFailedException e) {
+        catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
         }
 
