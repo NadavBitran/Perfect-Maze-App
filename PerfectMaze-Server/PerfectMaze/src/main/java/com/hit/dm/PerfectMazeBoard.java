@@ -15,6 +15,7 @@ public class PerfectMazeBoard implements Serializable {
     private int columns;
     private int rowsWithWalls;
     private int colsWithWalls;
+    private String algorithm;
 
     /**
      * Constructs a PerfectMazeBoard with provided maze and size.
@@ -24,7 +25,7 @@ public class PerfectMazeBoard implements Serializable {
      */
     public PerfectMazeBoard(int[][] maze, int mazeSize, Point endingLocation) {
         this.maze = maze;
-        this.startingLocation = new Point(0, 0);
+        this.startingLocation = new Point(0, 1);
         this.endingLocation = endingLocation;
         this.rows = mazeSize;
         this.columns = mazeSize;
@@ -92,6 +93,14 @@ public class PerfectMazeBoard implements Serializable {
 
     public void setEndingLocation(Point endingLocation) {
         this.endingLocation = endingLocation;
+    }
+
+    public String getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(String algorithm) {
+        this.algorithm = algorithm;
     }
 
     @Override

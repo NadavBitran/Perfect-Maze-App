@@ -5,7 +5,7 @@ import com.hit.dm.GameList;
 import com.hit.dm.Leaderboards;
 import com.hit.dm.User;
 import com.hit.dm.LeaderboardsEntity;
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailedException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,13 +18,13 @@ public class LeaderboardService {
     private Dao<GameList> gameDao;
     private static final int LARGEST_LEADERBOARDS_SIZE = 25;
 
-    public LeaderboardService(String filePathGame, String filePathUser)
+    public LeaderboardService(Dao<User> userDao, Dao<GameList> gameDao)
     {
-        this.gameDao = new Dao<>(filePathGame);
-        this.userDao = new Dao<>(filePathUser);
+        this.gameDao = gameDao;
+        this.userDao = userDao;
     }
 
-    public Leaderboards getLeaderboards() throws ServiceRequestFailedException {
+    public synchronized Leaderboards getLeaderboards() throws ServiceRequestFailedException {
         List<GameList> allGames = gameDao.findAll();
 
         allGames.sort(new Comparator<GameList>() {

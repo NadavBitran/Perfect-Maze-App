@@ -1,4 +1,4 @@
-package com.hit.util;
+package com.hit.exceptions;
 
 public class ServiceRequestFailedException extends Exception{
 

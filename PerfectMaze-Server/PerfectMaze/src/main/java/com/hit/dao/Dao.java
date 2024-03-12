@@ -1,6 +1,6 @@
 package com.hit.dao;
 
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailedException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -163,6 +163,10 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
     private boolean isFileExists(String filePath) {
         File file = new File(filePath);
         return file.exists();
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
 
 }

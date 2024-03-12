@@ -1,4 +1,6 @@
-package com.hit.util;
+package com.hit.service.util;
+
+import com.hit.exceptions.ServiceRequestFailedException;
 
 import java.io.File;
 import java.io.IOException;

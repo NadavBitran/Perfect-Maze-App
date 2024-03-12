@@ -1,6 +1,6 @@
 package com.hit.dao;
 
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailedException;
 
 import java.io.Serializable;
 import java.util.List;

@@ -5,25 +5,27 @@ import com.hit.dm.GameList;
 import com.hit.dm.User;
 
 
-import com.hit.util.RollbackDaoUtil;
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.service.util.RollbackDaoUtil;
+import com.hit.exceptions.ServiceRequestFailedException;
 import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 public class UserService {
     private Dao<User> userDao;
     private Dao<GameList> gameListDao;
     private String userGameFile;
 
-    public UserService(String userFilePath, String gameFilePath) {
-        this.userDao = new Dao<>(userFilePath);
-        this.gameListDao = new Dao<>(gameFilePath);
-        this.userGameFile = userFilePath;
+    public UserService(Dao<User> userDao, Dao<GameList> gameListDao) {
+        this.userDao = userDao;
+        this.gameListDao = gameListDao;
+        this.userGameFile = userDao.getFilePath();
     }
 
-    public String register(String email, String password, String username) throws ServiceRequestFailedException {
+    public synchronized String register(String email, String password, String username) throws ServiceRequestFailedException {
+        if(email == null) throw new ServiceRequestFailedException("Failed to register: no email provided");
+        if(password == null) throw new ServiceRequestFailedException("Failed to register: no password provided");
+        if(username == null) throw new ServiceRequestFailedException("Failed to register: no username provided");
+
         User existingUser = userDao.find(email);
 
         if (existingUser != null)
@@ -36,7 +38,10 @@ public class UserService {
         return newUser.getUserId();
     }
 
-    public String login(String email, String password) throws ServiceRequestFailedException {
+    public synchronized String login(String email, String password) throws ServiceRequestFailedException {
+        if(email == null) throw new ServiceRequestFailedException("Failed to login: no email provided");
+        if(password == null) throw new ServiceRequestFailedException("Failed to login: no password provided");
+
         User existingUser = userDao.find(email);
 
         if (existingUser == null)
@@ -48,7 +53,9 @@ public class UserService {
         return existingUser.getUserId();
     }
 
-    public User getUser(String email) throws ServiceRequestFailedException {
+    public synchronized User getUser(String email) throws ServiceRequestFailedException {
+        if(email == null) throw new ServiceRequestFailedException("Failed to retrieve user: no email provided");
+
         User user = userDao.find(email);
 
         if(user == null)
@@ -57,7 +64,9 @@ public class UserService {
         return user;
     }
 
-    public void deleteUser(String email, String userId) throws ServiceRequestFailedException{
+    public synchronized void deleteUser(String email, String userId) throws ServiceRequestFailedException{
+        if(email == null) throw new ServiceRequestFailedException("Failed to delete user: no email provided");
+        if(userId == null) throw new ServiceRequestFailedException("Failed to delete user: no userId provided");
 
         try
         {

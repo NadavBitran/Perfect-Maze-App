@@ -1,16 +1,15 @@
 package com.hit.service;
 
 import com.hit.algorithm.DFS;
-import com.hit.dm.Game;
-import com.hit.dm.Leaderboards;
-import com.hit.dm.LeaderboardsEntity;
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.algorithm.IShortestPaths;
+import com.hit.dao.Dao;
+import com.hit.dm.*;
+import com.hit.exceptions.ServiceRequestFailedException;
 import com.hit.util.UndirectedGraphCreator;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
-import java.util.List;
 
 public class LeaderboardServiceTest implements IServiceTest{
     private static final String VALID_USER_PASSWORD = "USER_PASSWORD_TEST";
@@ -19,6 +18,10 @@ public class LeaderboardServiceTest implements IServiceTest{
     private static String VALID_USER_ID = null;
     private GameService gameServiceTest = null;
     private UserService userServiceTest = null;
+
+    private static Dao<GameList> gameListDao = null;
+    private static Dao<User> userDao = null;
+    private static IShortestPaths<Integer> algorithm = new DFS<>(UndirectedGraphCreator.createNxNGridGraph(10));
     private LeaderboardService leaderboardServiceTest = null;
     private Leaderboards leaderboardsTest = null;
 
@@ -27,7 +30,7 @@ public class LeaderboardServiceTest implements IServiceTest{
     @Override
     @Test
     public void checkEntityAdditionSuccess() throws ServiceRequestFailedException {
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
 
         leaderboardsTest = leaderboardServiceTest.getLeaderboards();
 
@@ -60,19 +63,24 @@ public class LeaderboardServiceTest implements IServiceTest{
 
     @Before
     public void setup() throws ServiceRequestFailedException {
-        gameServiceTest = new GameService(UtilTest.GAME_TEST_FILE, new DFS<Integer>(UndirectedGraphCreator.createNxNGridGraph(10)));
+
+        gameListDao = new Dao<>(UtilTest.GAME_TEST_FILE);
+
+        userDao = new Dao<>(UtilTest.USER_TEST_FILE);
+
+        gameServiceTest = new GameService(userDao, gameListDao);
 
         File gameFile = new File(UtilTest.GAME_TEST_FILE);
 
         Assert.assertTrue(gameFile.exists());
 
-        userServiceTest = new UserService(UtilTest.USER_TEST_FILE, UtilTest.GAME_TEST_FILE);
+        userServiceTest = new UserService(userDao, gameListDao);
 
         File userFile = new File(UtilTest.USER_TEST_FILE);
 
         Assert.assertTrue(userFile.exists());
 
-        leaderboardServiceTest = new LeaderboardService(UtilTest.GAME_TEST_FILE, UtilTest.USER_TEST_FILE);
+        leaderboardServiceTest = new LeaderboardService(userDao, gameListDao);
 
         VALID_USER_ID = userServiceTest.register(VALID_USER_EMAIL, VALID_USER_PASSWORD, VALID_USER_USERNAME);
 
@@ -94,9 +102,9 @@ public class LeaderboardServiceTest implements IServiceTest{
     }
 
     private void addFakeGamesToRegisteredUser() throws ServiceRequestFailedException {
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10), 100, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10), 90, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10), 80, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 90, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 80, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
     }
 }
