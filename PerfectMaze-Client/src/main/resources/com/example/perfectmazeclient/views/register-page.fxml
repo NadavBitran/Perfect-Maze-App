@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" styleClass="register-pane" stylesheets="@../css/register.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.RegisterController">
+
+    <center>
+        <VBox alignment="CENTER" maxWidth="300" spacing="10">
+
+            <TextField fx:id="emailField" prefHeight="50.0" prefWidth="297.0" promptText="Email" styleClass="text-field">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font></TextField>
+            <TextField fx:id="usernameField" prefHeight="50.0" prefWidth="297.0" promptText="Username" styleClass="text-field">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font></TextField>
+            <PasswordField fx:id="passwordField" prefHeight="50.0" prefWidth="297.0" promptText="Password" styleClass="text-field">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font></PasswordField>
+
+            <Button onAction="#onRegisterButtonClick" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Register" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font></Button>
+        </VBox>
+    </center>
+   <top>
+         <Label prefHeight="52.0" prefWidth="117.0" styleClass="title-label" text="Register" textFill="#007bff" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Dosis ExtraBold" size="32.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin></Label>
+   </top>
+   <bottom>
+         <Button onAction="#onBackButtonClick" prefHeight="69.0" prefWidth="119.0" styleClass="btn-secondary" text="Back" BorderPane.alignment="CENTER_LEFT">
+             <font>
+                 <Font size="32.0" />
+             </font>
+         </Button>
+   </bottom>
+
+</BorderPane>

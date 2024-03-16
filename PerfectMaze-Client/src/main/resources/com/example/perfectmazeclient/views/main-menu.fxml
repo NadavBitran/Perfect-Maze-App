@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" styleClass="mainMenuWindow" stylesheets="@../css/main-menu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.MainController">
+    <top>
+        <Label alignment="TOP_CENTER" prefHeight="59.0" prefWidth="600.0" text="Perfect Maze Game" textFill="#007bff">
+         <font>
+            <Font name="Dosis ExtraBold" size="61.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin></Label>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="10" styleClass="container">
+            <Button onAction="#onLoginButtonClick" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Login" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin></Button>
+            <Button onAction="#onRegisterButtonClick" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Register" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin></Button>
+            <Button onAction="#onExitButtonClick" prefHeight="50.0" prefWidth="297.0" styleClass="btn-danger" text="Exit" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin></Button>
+         <BorderPane.margin>
+            <Insets top="-100.0" />
+         </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>

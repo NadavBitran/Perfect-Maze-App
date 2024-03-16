@@ -38,20 +38,16 @@ public class HandleRequest implements Runnable {
                     IController controller = ControllerFactory.createController(controllerName);
                     Response response = controller.executeAction(request);
 
-                    String jsonResponse = gson.toJson(response);
-
-                    writer.println(jsonResponse);
+                    writer.println(gson.toJson(response));
                 }
                 else
                 {
                     Response response = ResponseUtils.buildResponse("request missing header or body", "failed");
-
                     writer.println(gson.toJson(response));
                 }
 
             } catch (ControllerRoutingFailed | JsonSyntaxException e) {
                 Response response = ResponseUtils.buildResponse(e.getMessage(), "failed");
-
                 writer.println(gson.toJson(response));
             } finally {
                 closeSocket();
