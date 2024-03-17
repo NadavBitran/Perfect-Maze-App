@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/game-results-summary.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.GameSummaryController">
+
+    <center>
+        <VBox alignment="CENTER" spacing="20" styleClass="container" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+
+            <!-- Game result information -->
+            <VBox alignment="CENTER" spacing="10">
+                <!-- Time to complete -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="250.0" text="Time to Complete:">
+                  <font>
+                     <Font name="Dosis ExtraBold" size="26.0" />
+                  </font></Label>
+                    <Label fx:id="timeToCompleteLabel" prefHeight="47.0" prefWidth="187.0" text="70 Seconds">
+                  <font>
+                     <Font size="26.0" />
+                  </font></Label>
+                </HBox>
+                <!-- Algorithm chosen -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="241.0" text="Algorithm Chosen:">
+                  <font>
+                     <Font name="Dosis ExtraBold" size="26.0" />
+                  </font></Label>
+                    <Label fx:id="algorithmChosenLabel" prefHeight="38.0" prefWidth="176.0" text="BFS">
+                  <font>
+                     <Font size="26.0" />
+                  </font></Label>
+                </HBox>
+                <!-- Maze difficulty -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="175.0" text="Maze Difficulty:">
+                  <font>
+                     <Font name="Dosis ExtraBold" size="26.0" />
+                  </font></Label>
+                    <Label fx:id="mazeDifficultyLabel" prefHeight="38.0" prefWidth="112.0" text="Hard">
+                  <font>
+                     <Font size="26.0" />
+                  </font></Label>
+                </HBox>
+            <VBox.margin>
+               <Insets bottom="30.0" />
+            </VBox.margin>
+            </VBox>
+        </VBox>
+    </center>
+   <top>
+         <!-- Title -->
+         <Label styleClass="title-label" text="Game Summary" textFill="#007bff" BorderPane.alignment="CENTER">
+             <font>
+                 <Font name="Dosis ExtraBold" size="32.0" />
+             </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+         </Label>
+   </top>
+   <bottom>
+
+         <!-- Buttons -->
+         <HBox spacing="20 " BorderPane.alignment="CENTER">
+             <!-- Continue button -->
+             <Button onAction="#onContinueButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Continue" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Button>
+
+             <!-- Retry button -->
+             <Button onAction="#onRetryButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Retry" textFill="WHITE">
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Button>
+         </HBox>
+   </bottom>
+
+</BorderPane>

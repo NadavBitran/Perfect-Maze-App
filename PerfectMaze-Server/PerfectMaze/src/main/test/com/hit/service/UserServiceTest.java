@@ -1,13 +1,13 @@
 package com.hit.service;
 
-import com.hit.dm.Game;
+import com.hit.dao.Dao;
+import com.hit.dm.GameList;
 import com.hit.dm.User;
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
-import java.io.IOException;
 
 public class UserServiceTest implements IServiceTest{
 
@@ -18,6 +18,8 @@ public class UserServiceTest implements IServiceTest{
     private static final String INVALID_USER_PASSWORD = "INVALID_USER_PASSWORD_TEST";
     private static final String INVALID_USER_EMAIL = "INVALID_USER_EMAIL_TEST";
     private static String VALID_USER_ID = null;
+    private static Dao<GameList> gameListDao = null;
+    private static Dao<User> userDao = null;
     private static UserService userServiceTest = null;
     private static User newUser = new User(VALID_USER_EMAIL, VALID_USER_PASSWORD, VALID_USER_USERNAME);
     @Rule
@@ -26,7 +28,7 @@ public class UserServiceTest implements IServiceTest{
 
     @Override
     @Test
-    public void checkEntityAdditionSuccess() throws ServiceRequestFailedException {
+    public void checkEntityAdditionSuccess() throws ServiceRequestFailed {
         String newUserEmail = "NEW_USER_EMAIL_TEST";
 
         String newUserPassword = "NEW_USER_PASSWORD_TEST";
@@ -43,8 +45,8 @@ public class UserServiceTest implements IServiceTest{
     }
 
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityAdditionFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityAdditionFailure() throws ServiceRequestFailed {
         String existingUserEmail = VALID_USER_EMAIL;
 
         String existingUserName = VALID_USER_USERNAME;
@@ -58,35 +60,40 @@ public class UserServiceTest implements IServiceTest{
 
     @Override
     @Test
-    public void checkEntityRetrievalSuccess() throws ServiceRequestFailedException {
+    public void checkEntityRetrievalSuccess() throws ServiceRequestFailed {
         String userId = userServiceTest.login(VALID_USER_EMAIL, VALID_USER_PASSWORD);
 
         Assert.assertEquals(userId, VALID_USER_ID);
     }
 
     @Override
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityRetrievalFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityRetrievalFailure() throws ServiceRequestFailed {
         userServiceTest.login(INVALID_USER_EMAIL, INVALID_USER_PASSWORD);
     }
 
     @Override
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityDeletionSuccess() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityDeletionSuccess() throws ServiceRequestFailed {
         userServiceTest.deleteUser(VALID_USER_EMAIL, VALID_USER_ID);
 
         userServiceTest.login(VALID_USER_EMAIL, VALID_USER_PASSWORD);
     }
 
 
-    @Test(expected = ServiceRequestFailedException.class)
-    public void checkEntityDeletionFailure() throws ServiceRequestFailedException {
+    @Test(expected = ServiceRequestFailed.class)
+    public void checkEntityDeletionFailure() throws ServiceRequestFailed {
         userServiceTest.deleteUser(INVALID_USER_EMAIL, VALID_USER_ID);
     }
 
     @Before
-    public void setup() throws ServiceRequestFailedException {
-        userServiceTest = new UserService(UtilTest.USER_TEST_FILE, UtilTest.GAME_TEST_FILE);
+    public void setup() throws ServiceRequestFailed {
+
+        gameListDao = new Dao<>(UtilTest.GAME_TEST_FILE);
+
+        userDao = new Dao<>(UtilTest.USER_TEST_FILE);
+
+        userServiceTest = new UserService(userDao, gameListDao);
 
         File userFile = new File(UtilTest.USER_TEST_FILE);
 

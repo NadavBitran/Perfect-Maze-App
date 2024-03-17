@@ -1,4 +1,4 @@
-package com.hit.util;
+package com.hit.service.util;
 
 import com.hit.dm.PerfectMazeBoard;
 import com.hit.undirectedGraph.Edge;
@@ -47,7 +47,7 @@ public class PerfectMazeGenerator {
             }
         }
 
-        Point generatedEndingMazeLocation = new Point(2*mazeSize , (int)(Math.random() * mazeSize) * 2 + 1);
+        Point generatedEndingMazeLocation = new Point((int)(Math.random() * mazeSize) * 2 + 1 , (2*mazeSize));
 
         perfectMaze[generatedEndingMazeLocation.x][generatedEndingMazeLocation.y] = 1;
         perfectMaze[0][1] = 1;

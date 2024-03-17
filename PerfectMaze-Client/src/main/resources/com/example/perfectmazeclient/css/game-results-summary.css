@@ -1,0 +1,9 @@
+.container
+{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.btn-primary{
+    -fx-background-color: #007bff;
+}

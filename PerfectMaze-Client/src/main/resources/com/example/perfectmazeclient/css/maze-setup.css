@@ -1,0 +1,35 @@
+
+
+.container {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007bff;
+
+}
+
+
+
+.btn-start {
+
+    -fx-background-color: #007bff;
+
+}
+.choice-box{
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill:  #007bff;
+    -fx-font-family: "Dosis ExtraBold";
+    -fx-font-size: 26px;
+    -fx-border-color: #007bff;
+    -fx-border-width: 2px;
+}
+
+.choice-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: "Dosis ExtraBold";
+    -fx-font-size: 26px;
+}

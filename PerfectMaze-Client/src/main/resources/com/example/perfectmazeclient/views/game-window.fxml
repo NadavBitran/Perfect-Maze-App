@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/game-window.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.GameController">
+   <GridPane fx:id="mazeGridPane" layoutY="48.0" maxHeight="560.0" prefHeight="550.0" prefWidth="600.0">
+      <StackPane.margin>
+         <Insets top="50.0" />
+      </StackPane.margin></GridPane>
+   <Label fx:id="pressToStart" text="Press To Start" textFill="#007bff">
+      <font>
+         <Font name="Dosis ExtraBold" size="68.0" />
+      </font>
+      <StackPane.margin>
+         <Insets top="-50.0" />
+      </StackPane.margin>
+
+   </Label>
+   <Label fx:id="time" alignment="TOP_LEFT" layoutX="176.0" layoutY="7.0" prefHeight="61.0" prefWidth="593.0" text="Time: 00:00" StackPane.alignment="TOP_CENTER">
+      <font>
+         <Font name="Dosis ExtraBold" size="32.0" />
+      </font>
+      <StackPane.margin>
+         <Insets left="10.0" top="5.0" />
+      </StackPane.margin>
+   </Label>
+   <Label fx:id="youWon" alignment="CENTER" layoutX="109.0" layoutY="240.0" prefHeight="87.0" prefWidth="402.0" text="You Won!" textFill="#007bff">
+      <font>
+         <Font name="Dosis ExtraBold" size="68.0" />
+      </font>
+      <StackPane.margin>
+         <Insets top="-47.0" />
+      </StackPane.margin>
+   </Label>
+</StackPane>

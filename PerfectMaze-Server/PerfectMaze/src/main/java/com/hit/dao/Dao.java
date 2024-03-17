@@ -1,6 +1,6 @@
 package com.hit.dao;
 
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully saved, {@code false} otherwise.
      */
     @Override
-    public void save(String tKey, TValue tValue) throws ServiceRequestFailedException {
+    public synchronized void save(String tKey, TValue tValue) throws ServiceRequestFailed {
 
         Map<String, TValue> entities = null;
 
@@ -58,7 +58,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
         }
         catch (IOException | ClassNotFoundException e)
         {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
 
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath)))
@@ -68,7 +68,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
         }
         catch (IOException e)
         {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
     }
 
@@ -80,7 +80,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return {@code true} if the entity was successfully deleted, {@code false} otherwise.
      */
     @Override
-    public boolean delete(String tKey) throws ServiceRequestFailedException {
+    public synchronized boolean delete(String tKey) throws ServiceRequestFailed {
 
         Map<String, TValue> entities = null;
 
@@ -94,7 +94,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
             }
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
 
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath)))
@@ -102,7 +102,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
             objectOutputStream.writeObject(entities);
             objectOutputStream.flush();
         } catch (IOException e) {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
 
         return true;
@@ -115,19 +115,19 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
      * @return The entity identified by the provided key, or {@code null} if not found.
      */
     @Override
-    public TValue find(String tKey) throws ServiceRequestFailedException {
+    public synchronized TValue find(String tKey) throws ServiceRequestFailed {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {
             Map<String, TValue> entities = (HashMap<String, TValue>) objectInputStream.readObject();
 
             return entities.get(tKey);
         } catch (IOException | ClassNotFoundException e) {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
     }
 
     @Override
-    public List<TValue> findAll() throws ServiceRequestFailedException
+    public synchronized List<TValue> findAll() throws ServiceRequestFailed
     {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {
@@ -136,12 +136,12 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
             return new ArrayList<>(entities.values());
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
     }
 
     @Override
-    public Map<String, TValue> getMap() throws ServiceRequestFailedException
+    public synchronized Map<String, TValue> getMap() throws ServiceRequestFailed
     {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath)))
         {
@@ -150,7 +150,7 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
             return entities;
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new ServiceRequestFailedException("Failed due to repository error");
+            throw new ServiceRequestFailed("Failed due to repository error");
         }
     }
 
@@ -163,6 +163,10 @@ public class Dao<TValue extends Serializable> implements IDao<String, TValue> {
     private boolean isFileExists(String filePath) {
         File file = new File(filePath);
         return file.exists();
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
 
 }
