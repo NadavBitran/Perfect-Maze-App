@@ -21,7 +21,7 @@ public class UserService {
         this.userGameFile = userDao.getFilePath();
     }
 
-    public String register(String email, String password, String username) throws ServiceRequestFailed {
+    public synchronized String register(String email, String password, String username) throws ServiceRequestFailed {
         if(email == null) throw new ServiceRequestFailed("Failed to register: no email provided");
         if(password == null) throw new ServiceRequestFailed("Failed to register: no password provided");
         if(username == null) throw new ServiceRequestFailed("Failed to register: no username provided");

@@ -8,6 +8,7 @@ import com.hit.exceptions.ControllerRoutingFailed;
 import com.hit.server.Request;
 import com.hit.server.Response;
 import com.hit.server.util.ResponseUtils;
+import com.hit.server.util.ServicesContainer;
 import com.hit.service.UserService;
 
 public class UserController implements IController {
@@ -76,20 +77,23 @@ public class UserController implements IController {
 
     public Response deleteUser(JsonElement body) throws JsonSyntaxException
     {
-        User user = gson.fromJson(body, User.class);
-
-        Response response = null;
-
-        try
+        synchronized (ServicesContainer.getGameService())
         {
-            userService.deleteUser(user.getEmail(), user.getUserId());
-            response = ResponseUtils.buildResponse("User deleted successfully", "success");
-        }
-        catch(Exception e)
-        {
-            response = ResponseUtils.buildResponse(e.getMessage(), "failed");
-        }
+            User user = gson.fromJson(body, User.class);
 
-        return response;
+            Response response = null;
+
+            try
+            {
+                userService.deleteUser(user.getEmail(), user.getUserId());
+                response = ResponseUtils.buildResponse("User deleted successfully", "success");
+            }
+            catch(Exception e)
+            {
+                response = ResponseUtils.buildResponse(e.getMessage(), "failed");
+            }
+
+            return response;
+        }
     }
 }
