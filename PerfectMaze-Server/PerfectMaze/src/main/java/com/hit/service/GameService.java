@@ -38,7 +38,7 @@ public class GameService {
      */
     public synchronized Game saveGame(Game gamePlayed) throws ServiceRequestFailed {
         if(!GameUtils.isGamePropertiesExistValid(gamePlayed))
-            throw new ServiceRequestFailed("Failed to save game: game properties are does not exist");
+            throw new ServiceRequestFailed("Failed to save game: game properties does not exist");
 
         if(userDao.find(gamePlayed.getUserEmail()) == null)
             throw new ServiceRequestFailed("Failed to save game: user with id: " + gamePlayed.getUserId() + " not exist");

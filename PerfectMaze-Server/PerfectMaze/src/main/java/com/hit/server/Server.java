@@ -1,53 +1,90 @@
 package com.hit.server;
 
+import com.hit.constants.LocalRepositoryFileLocation;
+import com.hit.controller.GameController;
+import com.hit.controller.LeaderboardsController;
+import com.hit.controller.UserController;
+import com.hit.dao.Dao;
+import com.hit.dm.GameList;
+import com.hit.dm.User;
+import com.hit.server.util.ControllersContainer;
+import com.hit.server.util.ServicesContainer;
+import com.hit.service.GameService;
+import com.hit.service.LeaderboardService;
+import com.hit.service.UserService;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class Server {
+public class Server implements Runnable {
     private int port;
-    private boolean running;
     private ServerSocket serverSocket;
+    private ExecutorService threadPool;
+    private static final int THREAD_POOL_SIZE = 200;
 
     public Server(int port) {
         this.port = port;
     }
 
-    public void startServer() {
-        try {
-            serverSocket = new ServerSocket(port);
-            running = true;
-            System.out.println("Server started on port " + port);
+    @Override
+    public void run() {
+        try
+        {
+            initializeServer();
+            initializeThreadPool();
+            initializeServerComponents();
 
-            while (running) {
-                try {
-                    Socket clientSocket = serverSocket.accept();
-                    System.out.println("Accepted connection from " + clientSocket.getInetAddress().getHostAddress());
-
-                    // Create a new HandleRequest instance for each connection and start it in a new thread.
-                    HandleRequest requestHandler = new HandleRequest(clientSocket);
-
-                    new Thread(requestHandler).start();
-                } catch (IOException e) {
-                    System.err.println("Error accepting client connection: " + e.getMessage());
-                }
+            while (true)
+            {
+                Socket socket = serverSocket.accept();
+                threadPool.execute(new HandleRequest(socket));
             }
-        } catch (IOException e) {
-            System.err.println("Could not start server on port " + port + ": " + e.getMessage());
-        } finally {
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error initializing server: " + e.getMessage());
+        }
+        finally
+        {
             stopServer();
         }
     }
 
-    public void stopServer() {
-        running = false;
-        if (serverSocket != null && !serverSocket.isClosed()) {
-            try {
-                serverSocket.close();
-            } catch (IOException e) {
-                System.err.println("Error closing server socket: " + e.getMessage());
-            }
-        }
-        System.out.println("Server stopped.");
+    private void initializeServer() throws IOException {
+        serverSocket = new ServerSocket(port);
     }
+
+    private void initializeThreadPool() {
+        threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+    }
+
+    private void initializeServerComponents() {
+        Dao<User> userDao = new Dao<>(LocalRepositoryFileLocation.USER_FILE_LOCATION);
+        Dao<GameList> gameDao = new Dao<>(LocalRepositoryFileLocation.GAME_FILE_LOCATION);
+
+        ServicesContainer.setGameService(new GameService(userDao, gameDao));
+        ServicesContainer.setUserService(new UserService(userDao, gameDao));
+        ServicesContainer.setLeaderboardService(new LeaderboardService(userDao, gameDao));
+
+        ControllersContainer.setUserController(new UserController(ServicesContainer.getUserService()));
+        ControllersContainer.setGameController(new GameController(ServicesContainer.getGameService()));
+        ControllersContainer.setLeaderboardController(new LeaderboardsController(ServicesContainer.getLeaderboardService()));
+    }
+
+    private void stopServer() {
+        if (serverSocket == null || serverSocket.isClosed()) return;
+        try
+        {
+            serverSocket.close();
+            System.out.println("Server stopped.");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error closing server socket: " + e.getMessage());
+        }
+    }
+
 }
