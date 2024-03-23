@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/game-options.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.GameOptionsController">
+
+    <top>
+        <Label alignment="CENTER" prefHeight="42.0" prefWidth="600.0" styleClass="title-label, global-font" text="Choose Your Option" textFill="#007bff">
+            <font>
+                <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin></Label>
+    </top>
+
+    <!-- Centering the VBox -->
+    <center>
+        <VBox alignment="CENTER" spacing="10" styleClass="container" prefWidth="358.0">
+            <!-- Button to start the maze -->
+            <Button fx:id="startMazeButton" onAction="#onStartMazeButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Start Maze" textFill="WHITE">
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font></Button>
+
+            <!-- Button to view leaderboard -->
+            <Button fx:id="viewLeaderboardButton" onAction="#onViewLeaderboardButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="View Leaderboard" textFill="WHITE">
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font></Button>
+         <Button fx:id="signOutButton" layoutX="210.0" layoutY="303.0" onAction="#onSignOutButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Sign Out" textFill="WHITE">
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+         </Button>
+         <BorderPane.margin>
+            <Insets top="-20.0" />
+         </BorderPane.margin>
+
+        </VBox>
+    </center>
+
+
+</BorderPane>

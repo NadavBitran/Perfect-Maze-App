@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../css/maze-setup.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.MazeSetupController">
+
+    <center>
+        <VBox spacing="10" styleClass="container">
+
+            <!-- Maze size selection -->
+            <HBox spacing="10" styleClass="hbox, container">
+                <Label prefHeight="35.0" prefWidth="236.0" styleClass="label-text" text="Maze Size:">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="Dosis ExtraBold" size="26.0" />
+               </font></Label>
+                <ChoiceBox fx:id="mazeSizeChoiceBox" prefHeight="20.0" prefWidth="160.0" styleClass="choice-box">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Small" />
+                            <String fx:value="Medium" />
+                            <String fx:value="Large" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </HBox>
+
+            <!-- Generator algorithm selection -->
+            <HBox spacing="10" styleClass="hbox, container">
+                <Label prefHeight="35.0" prefWidth="236.0" styleClass="label-text" text="Generator Algorithm:">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="Dosis ExtraBold" size="26.0" />
+               </font></Label>
+                <ChoiceBox fx:id="generatorAlgorithmChoiceBox" prefHeight="20.0" prefWidth="160.0" styleClass="choice-box">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="BFS" />
+                            <String fx:value="DFS" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </HBox>
+
+            <Button onAction="#onStartButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-start" text="Start" textFill="WHITE">
+                <VBox.margin>
+                    <Insets top="15.0" />
+                </VBox.margin>
+            <font>
+               <Font name="Dosis ExtraBold" size="32.0" />
+            </font>
+            </Button>
+            <BorderPane.margin>
+                <Insets top="-20.0" />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+
+
+    <top>
+        <!-- Title label -->
+        <Label alignment="CENTER" prefHeight="65.0" prefWidth="628.0" styleClass="title-label" text="Choose Maze Size" textFill="#007bff" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Dosis ExtraBold" size="32.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin></Label>
+    </top>
+
+    <bottom>
+
+        <!-- Back button -->
+        <Button maxHeight="113.0" maxWidth="120.0" minHeight="60.0" onAction="#onBackButtonClicked" prefHeight="69.0" prefWidth="119.0" styleClass="btn-secondary" text="Back" BorderPane.alignment="BOTTOM_LEFT">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+         <font>
+            <Font size="32.0" />
+         </font>
+        </Button>
+    </bottom>
+
+</BorderPane>

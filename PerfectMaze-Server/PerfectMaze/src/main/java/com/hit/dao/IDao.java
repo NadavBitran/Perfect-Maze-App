@@ -1,6 +1,6 @@
 package com.hit.dao;
 
-import com.hit.util.ServiceRequestFailedException;
+import com.hit.exceptions.ServiceRequestFailed;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +19,7 @@ public interface IDao<TKey extends Serializable, TValue extends Serializable> {
      * @param value The entity to be saved.
      * @return      {@code true} if the entity was successfully saved, {@code false} otherwise.
      */
-    public void save(TKey key, TValue value) throws ServiceRequestFailedException;
+    public void save(TKey key, TValue value) throws ServiceRequestFailed;
 
     /**
      * Deletes the entity identified by the provided key.
@@ -27,7 +27,7 @@ public interface IDao<TKey extends Serializable, TValue extends Serializable> {
      * @param key The key identifying the entity to be deleted.
      * @return    {@code true} if the entity was successfully deleted, {@code false} otherwise.
      */
-    public boolean delete(TKey key) throws ServiceRequestFailedException;
+    public boolean delete(TKey key) throws ServiceRequestFailed;
 
     /**
      * Finds and returns the entity identified by the provided key.
@@ -35,11 +35,11 @@ public interface IDao<TKey extends Serializable, TValue extends Serializable> {
      * @param key The key identifying the entity to be found.
      * @return    The entity identified by the provided key, or {@code null} if not found.
      */
-    public TValue find(TKey key) throws ServiceRequestFailedException;
+    public TValue find(TKey key) throws ServiceRequestFailed;
 
-    public List<TValue> findAll() throws ServiceRequestFailedException;
+    public List<TValue> findAll() throws ServiceRequestFailed;
 
-    public Map<TKey, TValue> getMap() throws ServiceRequestFailedException;
+    public Map<TKey, TValue> getMap() throws ServiceRequestFailed;
 
 
 

@@ -1,0 +1,25 @@
+.mainMenuWindow
+{
+       -fx-background-image: url("../images/mainMenuBackground.gif");
+       -fx-background-size: cover;
+       -fx-background-position: center;
+       -fx-background-repeat: no-repeat;
+}
+
+
+.container {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+
+.btn-primary {
+   -fx-background-color: #007bff;
+}
+
+
+
+.btn-danger {
+    -fx-background-color: #dc3545;
+}
+
