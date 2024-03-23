@@ -1,11 +1,11 @@
 package com.example.perfectmazeclient.dm;
 
-public class LeaderboardEntry {
+public class LeaderboardsEntity {
 
     private String username;
     private int mazesCompleted;
 
-    public LeaderboardEntry(String username, int mazesCompleted) {
+    public LeaderboardsEntity(String username, int mazesCompleted) {
         this.username = username;
         this.mazesCompleted = mazesCompleted;
     }

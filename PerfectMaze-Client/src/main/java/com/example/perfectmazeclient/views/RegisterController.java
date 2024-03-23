@@ -1,5 +1,7 @@
 package com.example.perfectmazeclient.views;
 
+import com.example.perfectmazeclient.requests.handlers.UserRequests;
+import com.example.perfectmazeclient.util.AlertError;
 import com.example.perfectmazeclient.validation.LoginValidation;
 import com.example.perfectmazeclient.constants.FXMLPaths;
 import com.example.perfectmazeclient.util.PageLoader;
@@ -24,7 +26,15 @@ public class RegisterController implements Initializable  {
 
         if(!LoginValidation.validateRegister(email, username, password)) return;
 
-        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
+        try
+        {
+            UserRequests.handleRegisterRequest(email, username, password);
+            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
+        }
+        catch (Exception e)
+        {
+            AlertError.showAlertError("Error", "Register", e.getMessage());
+        }
     }
 
 

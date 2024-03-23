@@ -1,5 +1,8 @@
 package com.example.perfectmazeclient.views;
 
+import com.example.perfectmazeclient.exceptions.RequestFailed;
+import com.example.perfectmazeclient.requests.handlers.UserRequests;
+import com.example.perfectmazeclient.util.AlertError;
 import com.example.perfectmazeclient.validation.LoginValidation;
 import com.example.perfectmazeclient.constants.FXMLPaths;
 import com.example.perfectmazeclient.util.PageLoader;
@@ -26,7 +29,15 @@ public class LoginController implements Initializable {
 
         if(!LoginValidation.validateLogin(username, password)) return;
 
-        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, event, getClass());
+        try
+        {
+            UserRequests.handleLoginRequest(username, password);
+            PageLoader.loadPage(FXMLPaths.MAIN_MENU, event, getClass());
+        }
+        catch (RequestFailed e)
+        {
+            AlertError.showAlertError("Error", "Login", e.getMessage());
+        }
     }
 
     @FXML
@@ -36,6 +47,10 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        clearFields();
+    }
+
+    private void clearFields() {
         usernameField.setText("");
         passwordField.setText("");
         usernameField.setFocusTraversable(false);

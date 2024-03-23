@@ -1,8 +1,14 @@
 package com.example.perfectmazeclient.views;
 
+import com.example.perfectmazeclient.constants.FXMLPaths;
+import com.example.perfectmazeclient.constants.MazeDifficulty;
 import com.example.perfectmazeclient.constants.WindowSize;
 import com.example.perfectmazeclient.dm.PerfectMazeBoard;
 import com.example.perfectmazeclient.dm.Point;
+import com.example.perfectmazeclient.exceptions.RequestFailed;
+import com.example.perfectmazeclient.requests.handlers.GameRequests;
+import com.example.perfectmazeclient.util.AlertError;
+import com.example.perfectmazeclient.util.CurrentGame;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,7 +24,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -51,7 +56,11 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initializeFakeMazeData();
+        if (CurrentGame.isTryingToImprove()) {
+            initializeMazePreviousData();
+        } else {
+            initializeMazeDataFromServer();
+        }
         setMaze();
         mazeGridPane.setFocusTraversable(true);
         mazeGridPane.setOnKeyPressed(this::handleKeyPress);
@@ -111,7 +120,31 @@ public class GameController implements Initializable {
         }
 
         if(gameEnded){
-            toGoSummeryPage();
+
+            if(CurrentGame.isTryingToImprove() && secondsElapsed < CurrentGame.getCurrentGame().getTimeToSolve()) {
+                try
+                {
+                    GameRequests.handleMazeImprovementRequest(CurrentGame.getCurrentGame().getGameId(), secondsElapsed);
+                    toGoSummeryPage();
+                }
+                catch (RequestFailed e)
+                {
+                    AlertError.showAlertError("Error", "Saving Maze", e.getMessage(), FXMLPaths.GAME_OPTIONS);
+                }
+            }
+            else if(!CurrentGame.isTryingToImprove())
+            {
+                try
+                {
+                    GameRequests.handleMazeSolvedRequest(CurrentGame.getCurrentGame().getMazeBoard(), secondsElapsed);
+                    toGoSummeryPage();
+                }
+                catch (RequestFailed e)
+                {
+                    AlertError.showAlertError("Error", "Saving Maze", e.getMessage(), FXMLPaths.GAME_OPTIONS);
+                }
+            }
+
             return;
         }
 
@@ -183,42 +216,21 @@ public class GameController implements Initializable {
         }
     }
 
-    private void initializeFakeMazeData() {
-        int[][] maze = {
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
-                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0},
-                {0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0},
-                {0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0},
-                {0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0},
-                {0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0},
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-        String algorithm = "DFS";
-        Point startingLocation = new Point(1, 0);
-        Point endingLocation = new Point(1, 20);
+    private void initializeMazeDataFromServer() {
+        try
+        {
+            GameRequests.handleMazeGenerationRequest(
+                    MazeDifficulty.DIFFICULTY_MAP.get(CurrentGame.getCurrentGame().getMazeBoard().getRows()),
+                    CurrentGame.getCurrentGame().getMazeBoard().getAlgorithm());
+        }
+        catch (RequestFailed e)
+        {
+            AlertError.showAlertError("Error", "Maze Generation", e.getMessage(), FXMLPaths.GAME_OPTIONS);
+        }
+    }
 
-        perfectMazeBoard = new PerfectMazeBoard();
-        perfectMazeBoard.setMaze(maze);
-        perfectMazeBoard.setStartingLocation(startingLocation);
-        perfectMazeBoard.setEndingLocation(endingLocation);
-        perfectMazeBoard.setAlgorithm(algorithm);
-        perfectMazeBoard.setRows(maze.length);
-        perfectMazeBoard.setColumns(maze[0].length);
-        perfectMazeBoard.setRowsWithWalls(2*maze.length + 1);
-        perfectMazeBoard.setColsWithWalls(2*maze[0].length + 1);
+    private void initializeMazePreviousData() {
+        perfectMazeBoard = CurrentGame.getCurrentGame().getMazeBoard();
     }
 
 

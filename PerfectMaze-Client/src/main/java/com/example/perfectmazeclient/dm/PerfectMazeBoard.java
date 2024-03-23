@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * Represents a perfect maze board with starting and ending locations.
  */
-public class PerfectMazeBoard implements Serializable {
+public class PerfectMazeBoard {
     private int[][] maze;
     private Point startingLocation;
     private Point endingLocation;
@@ -17,6 +17,11 @@ public class PerfectMazeBoard implements Serializable {
     private String algorithm;
 
 
+    public PerfectMazeBoard(int mazeSize, String algorithm) {
+        this.rows = mazeSize;
+        this.columns = mazeSize;
+        this.algorithm = algorithm;
+    }
 
     public PerfectMazeBoard() {
     }

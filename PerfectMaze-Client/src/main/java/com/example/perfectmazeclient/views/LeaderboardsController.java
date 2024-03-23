@@ -1,9 +1,12 @@
 package com.example.perfectmazeclient.views;
 
-import com.example.perfectmazeclient.dm.LeaderboardEntry;
+import com.example.perfectmazeclient.dm.Leaderboards;
+import com.example.perfectmazeclient.dm.LeaderboardsEntity;
 import com.example.perfectmazeclient.constants.FXMLPaths;
+import com.example.perfectmazeclient.exceptions.RequestFailed;
+import com.example.perfectmazeclient.requests.handlers.LeaderboardRequests;
+import com.example.perfectmazeclient.util.AlertError;
 import com.example.perfectmazeclient.util.PageLoader;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,16 +21,15 @@ import java.util.ResourceBundle;
 public class LeaderboardsController implements Initializable {
 
     @FXML
-    private TableView<LeaderboardEntry> leaderboardsTable;
+    private TableView<LeaderboardsEntity> leaderboardsTable;
     @FXML
-    private TableColumn<LeaderboardEntry, String> usernameColumn;
+    private TableColumn<LeaderboardsEntity, String> usernameColumn;
     @FXML
-    private TableColumn<LeaderboardEntry, Integer> mazesCompletedColumn;
+    private TableColumn<LeaderboardsEntity, Integer> mazesCompletedColumn;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // TODO: Fetch from server
-        ObservableList<LeaderboardEntry> data = initializeFakeLeaderboardData();
+        ObservableList<LeaderboardsEntity> data = initializeLeaderboardData();
 
         initializeLeaderboardsTable(data);
     }
@@ -36,21 +38,24 @@ public class LeaderboardsController implements Initializable {
         PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
     }
 
-    private ObservableList<LeaderboardEntry> initializeFakeLeaderboardData()
+    private ObservableList<LeaderboardsEntity> initializeLeaderboardData()
     {
-        ObservableList<LeaderboardEntry> data = FXCollections.observableArrayList();
-        for (int i = 0; i < 25; i++) {
-            data.add(new LeaderboardEntry("User" + i, (int) (Math.random() * 100)));
+        try
+        {
+            Leaderboards leaderboards = LeaderboardRequests.handleGetLeaderboardsRequest();
+            return (ObservableList<LeaderboardsEntity>) leaderboards.getLeaderboards();
         }
-
-        return data;
+        catch (RequestFailed e)
+        {
+            AlertError.showAlertError("Error", "Leaderboards", e.getMessage(), FXMLPaths.GAME_OPTIONS);
+            return null;
+        }
     }
-    private void initializeLeaderboardsTable(List<LeaderboardEntry> leaderboards)
+    private void initializeLeaderboardsTable(List<LeaderboardsEntity> leaderboards)
     {
-        leaderboardsTable.setItems((ObservableList<LeaderboardEntry>) leaderboards);
+        leaderboardsTable.setItems((ObservableList<LeaderboardsEntity>) leaderboards);
         mazesCompletedColumn.setSortType(TableColumn.SortType.DESCENDING);
         leaderboardsTable.getSortOrder().add(mazesCompletedColumn);
         leaderboardsTable.sort();
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.perfectmazeclient.util;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,10 +11,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class PageLoader {
-    public static void loadPage(String fxmlPath, ActionEvent event, Class c)
+    public static void loadPage(String fxmlPath, Event event, Class c)
     {
         try {
-            Parent root = FXMLLoader.load(c.getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(c.getResource(fxmlPath));
+            Parent root = loader.load();
             Scene scene = new Scene(root);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -24,6 +26,8 @@ public class PageLoader {
             e.printStackTrace();
         }
     }
+
+
 
     public static void closePage(ActionEvent event)
     {
