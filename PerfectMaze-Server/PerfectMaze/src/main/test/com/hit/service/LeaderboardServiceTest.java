@@ -30,7 +30,7 @@ public class LeaderboardServiceTest implements IServiceTest{
     @Override
     @Test
     public void checkEntityAdditionSuccess() throws ServiceRequestFailed {
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm, "DFS"), 100, VALID_USER_ID, VALID_USER_EMAIL));
 
         leaderboardsTest = leaderboardServiceTest.getLeaderboards();
 
@@ -102,9 +102,9 @@ public class LeaderboardServiceTest implements IServiceTest{
     }
 
     private void addFakeGamesToRegisteredUser() throws ServiceRequestFailed {
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 90, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 80, VALID_USER_ID, VALID_USER_EMAIL));
-        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm, "DFS"), 100, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm, "DFS"), 90, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm, "DFS"), 80, VALID_USER_ID, VALID_USER_EMAIL));
+        gameServiceTest.saveGame(new Game(gameServiceTest.generateMaze(10, algorithm, "DFS"), 100, VALID_USER_ID, VALID_USER_EMAIL));
     }
 }

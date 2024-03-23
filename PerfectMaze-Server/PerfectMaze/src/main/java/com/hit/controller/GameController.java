@@ -57,8 +57,8 @@ public class GameController implements IController {
 
         try
         {
-            gameService.saveGame(game);
-            response = ResponseUtils.buildResponse("Game saved successfully", "success", "gameId", game.getGameId());
+            Game savedGame = gameService.saveGame(game);
+            response = ResponseUtils.buildResponse("Game saved successfully", "success", "gameId", savedGame.getGameId());
         }
         catch (ServiceRequestFailed e) {
             response = ResponseUtils.buildResponse(e.getMessage(), "failed");
@@ -163,7 +163,7 @@ public class GameController implements IController {
 
         try
         {
-            PerfectMazeBoard maze = gameService.generateMaze(dataAboutMaze.getRows(), algorithm);
+            PerfectMazeBoard maze = gameService.generateMaze(dataAboutMaze.getRows(), algorithm, dataAboutMaze.getAlgorithm());
             response = ResponseUtils.buildResponse("Maze generated successfully", "success", "mazeBoard", maze);
         }
         catch (ServiceRequestFailed e) {

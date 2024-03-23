@@ -32,23 +32,30 @@ public class HandleRequest implements Runnable {
                 String jsonRequest = scanner.nextLine();
                 Request request = gson.fromJson(jsonRequest, Request.class);
 
+                System.out.println("request: " + gson.toJson(request));
+
                 if (RequestUtils.isRequestValid(request))
                 {
                     String controllerName = request.getHeaders().getAction().split("/")[0];
                     IController controller = ControllerFactory.createController(controllerName);
                     Response response = controller.executeAction(request);
 
+                    System.out.println("response: " + gson.toJson(response));
+
                     writer.println(gson.toJson(response));
+                    writer.flush();
                 }
                 else
                 {
-                    Response response = ResponseUtils.buildResponse("request missing header or body", "failed");
+                    Response response = ResponseUtils.buildResponse("request missing header", "failed");
                     writer.println(gson.toJson(response));
+                    writer.flush();
                 }
 
             } catch (ControllerRoutingFailed | JsonSyntaxException e) {
                 Response response = ResponseUtils.buildResponse(e.getMessage(), "failed");
                 writer.println(gson.toJson(response));
+                writer.flush();
             } finally {
                 closeSocket();
             }

@@ -10,7 +10,7 @@
     <center>
         <VBox alignment="CENTER" maxWidth="300" prefHeight="540.0" prefWidth="358.0" spacing="10">
 
-            <TextField fx:id="usernameField" prefHeight="50.0" prefWidth="297.0" promptText="Username" styleClass="text-field">
+            <TextField fx:id="emailField" prefHeight="50.0" prefWidth="297.0" promptText="Email" styleClass="text-field">
             <font>
                <Font name="System Bold" size="20.0" />
             </font></TextField>

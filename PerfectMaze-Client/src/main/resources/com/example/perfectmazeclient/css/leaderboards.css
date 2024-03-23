@@ -59,3 +59,9 @@
     -fx-background-color: transparent;
     -fx-text-fill: #007bff;
 }
+
+.table-view .placeholder .label {
+    -fx-font-size: 32px;
+    -fx-font-family: "Dosis ExtraBold";
+    -fx-alignment: center;
+}

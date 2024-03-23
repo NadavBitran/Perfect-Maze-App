@@ -31,6 +31,7 @@ public class GameServiceTest implements IServiceTest {
     private static Dao<GameList> gameListDao = null;
     private static Dao<User> userDao = null;
     private static final IShortestPaths<Integer> shortestPathTestAlgorithm = new DFS(UndirectedGraphCreator.createNxNGridGraph(MAZE_CHOSEN_SIZE));
+    private static final String TEST_ALGORITHM = "DFS";
     private static Game newGame = null;
     private static PerfectMazeBoard generatedMaze = null;
 
@@ -48,7 +49,7 @@ public class GameServiceTest implements IServiceTest {
 
         VALID_USER_ID = userServiceTest.register(VALID_USER_EMAIL, VALID_USER_PASSWORD, VALID_USER_USERNAME);
 
-        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
+        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm, TEST_ALGORITHM);
 
         Game detailsOfGameToSave = new Game(generatedMaze, TIME_TO_SOLVE_MAZE, VALID_USER_ID, VALID_USER_EMAIL);
 
@@ -69,7 +70,7 @@ public class GameServiceTest implements IServiceTest {
 
     @Test
     public void checkMazeGenerationSuccess() throws ServiceRequestFailed {
-        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
+        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm, TEST_ALGORITHM);
 
         Assert.assertNotNull(generatedMaze);
         Assert.assertEquals(MAZE_CHOSEN_SIZE * 2 + 1, generatedMaze.getRowsWithWalls());
@@ -78,13 +79,13 @@ public class GameServiceTest implements IServiceTest {
 
     @Test(expected = ServiceRequestFailed.class)
     public void checkMazeGenerationFailure() throws ServiceRequestFailed {
-        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE_TOO_SMALL, shortestPathTestAlgorithm);
+        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE_TOO_SMALL, shortestPathTestAlgorithm, TEST_ALGORITHM);
     }
 
     @Override
     @Test
     public void checkEntityAdditionSuccess() throws ServiceRequestFailed {
-        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
+        generatedMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm, TEST_ALGORITHM);
 
         Game detailsOfGameToSave = new Game(generatedMaze, TIME_TO_SOLVE_MAZE, VALID_USER_ID, VALID_USER_EMAIL);
 
@@ -126,7 +127,7 @@ public class GameServiceTest implements IServiceTest {
     @Test
     public void checkGameListRetrievalSuccess() throws ServiceRequestFailed {
 
-        PerfectMazeBoard secondMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm);
+        PerfectMazeBoard secondMaze = gameServiceTest.generateMaze(MAZE_CHOSEN_SIZE, shortestPathTestAlgorithm, TEST_ALGORITHM);
 
         Game newGame2 = new Game(secondMaze, TIME_TO_SOLVE_MAZE, VALID_USER_ID, VALID_USER_EMAIL);
 

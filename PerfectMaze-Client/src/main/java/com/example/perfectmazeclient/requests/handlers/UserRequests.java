@@ -3,8 +3,9 @@ package com.example.perfectmazeclient.requests.handlers;
 import com.example.perfectmazeclient.dm.User;
 import com.example.perfectmazeclient.exceptions.RequestFailed;
 import com.example.perfectmazeclient.requests.communication.Response;
+import com.example.perfectmazeclient.requests.communication.util.ResponseProperties;
 import com.example.perfectmazeclient.requests.sender.Sender;
-import com.example.perfectmazeclient.util.LoggedUser;
+import com.example.perfectmazeclient.containers.CurrentLoggedUserContainer;
 import com.google.gson.JsonObject;
 
 public class UserRequests {
@@ -18,15 +19,16 @@ public class UserRequests {
 
         JsonObject body = response.getBody().getAsJsonObject();
 
-        String status = body.get("status").getAsString();
-        String message = body.get("message").getAsString();
-        String userId = body.get("userId").getAsString();
+        String status = body.get(ResponseProperties.STATUS).getAsString();
+        String message = body.get(ResponseProperties.MESSAGE).getAsString();
 
-        if(!status.equals("success")) throw new RequestFailed(message);
+        if(!status.equals(ResponseProperties.STATUS_SUCCESS)) throw new RequestFailed(message);
+
+        String userId = body.get(ResponseProperties.USER_ID).getAsString();
 
         user.setUserId(userId);
 
-        LoggedUser.setLoggedUser(user);
+        CurrentLoggedUserContainer.setLoggedUser(user);
     }
     public static void handleRegisterRequest(String email, String password, String username) throws RequestFailed {
 
@@ -36,15 +38,16 @@ public class UserRequests {
 
         JsonObject body = response.getBody().getAsJsonObject();
 
-        String status = body.get("status").getAsString();
-        String message = body.get("message").getAsString();
-        String userId = body.get("userId").getAsString();
+        String status = body.get(ResponseProperties.STATUS).getAsString();
+        String message = body.get(ResponseProperties.MESSAGE).getAsString();
 
-        if(!status.equals("success")) throw new RequestFailed(message);
+        if(!status.equals(ResponseProperties.STATUS_SUCCESS)) throw new RequestFailed(message);
+
+        String userId = body.get("userId").getAsString();
 
         user.setUserId(userId);
 
-        LoggedUser.setLoggedUser(user);
+        CurrentLoggedUserContainer.setLoggedUser(user);
     }
 
 }

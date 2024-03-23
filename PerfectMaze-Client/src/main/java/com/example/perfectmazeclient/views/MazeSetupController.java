@@ -1,9 +1,10 @@
 package com.example.perfectmazeclient.views;
 
 import com.example.perfectmazeclient.constants.FXMLPaths;
+import com.example.perfectmazeclient.constants.MazeDifficulty;
 import com.example.perfectmazeclient.dm.Game;
 import com.example.perfectmazeclient.dm.PerfectMazeBoard;
-import com.example.perfectmazeclient.util.CurrentGame;
+import com.example.perfectmazeclient.containers.CurrentGameContainer;
 import com.example.perfectmazeclient.validation.MazeSetupValidation;
 import com.example.perfectmazeclient.util.PageLoader;
 import javafx.event.ActionEvent;
@@ -26,11 +27,11 @@ public class MazeSetupController {
 
         if (!MazeSetupValidation.validateMazeSetup(mazeSize, generatorAlgorithm)) return;
 
-        Game game = CurrentGame.getCurrentGame();
+        Game game = CurrentGameContainer.getCurrentGame();
         game.setMazeBoard(new PerfectMazeBoard());
         game.getMazeBoard().setAlgorithm(generatorAlgorithm);
-        game.getMazeBoard().setRows(Integer.parseInt(mazeSize));
-        CurrentGame.setCurrentGame(game);
+        game.getMazeBoard().setRows(MazeDifficulty.DIFFICULTY_MAP.get(mazeSize));
+        CurrentGameContainer.setCurrentGame(game);
 
         PageLoader.loadPage(FXMLPaths.GAME_WINDOW, actionEvent, getClass());
     }

@@ -5,13 +5,14 @@ import com.example.perfectmazeclient.requests.communication.Response;
 import com.example.perfectmazeclient.requests.util.RequestUtils;
 import com.example.perfectmazeclient.requests.util.ResponseUtils;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Sender {
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().create();
     private static final String SERVER_IP = "localhost";
     private static final int SERVER_PORT = 34567;
 
@@ -27,6 +28,7 @@ public class Sender {
                  PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))))
             {
                 writer.println(gson.toJson(request));
+                writer.flush();
 
                 String jsonResponse = scanner.nextLine();
 

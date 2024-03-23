@@ -11,21 +11,17 @@ public class Game  {
     private String userId;
     private String userEmail;
 
-    /**
-     * Constructs a new Game instance with the provided parameters.
-     *
-     * @param mazeBoard   The maze board represented as a 2D array of integers, board size and start and end locations.
-     * @param timeToSolve The time taken to solve the maze.
-     */
     public Game(PerfectMazeBoard mazeBoard, int timeToSolve) {
-        this.gameId = UUID.randomUUID().toString();
         this.mazeBoard = mazeBoard;
         this.timeToSolve = timeToSolve;
     }
 
-    public Game() {
-        this.gameId = UUID.randomUUID().toString();
+    public Game(PerfectMazeBoard mazeBoard)
+    {
+        this.mazeBoard = mazeBoard;
     }
+
+    public Game() {}
 
     // Getters and setters for class attributes
 

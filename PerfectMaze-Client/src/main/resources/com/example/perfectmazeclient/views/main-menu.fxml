@@ -7,12 +7,12 @@
 
 <BorderPane prefHeight="600.0" prefWidth="600.0" styleClass="mainMenuWindow" stylesheets="@../css/main-menu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.perfectmazeclient.views.MainController">
     <top>
-        <Label alignment="TOP_CENTER" prefHeight="59.0" prefWidth="600.0" text="Perfect Maze Game" textFill="#007bff">
+        <Label alignment="TOP_CENTER" prefHeight="59.0" prefWidth="600.0" styleClass="menu-title" text="Perfect Maze Game" textFill="WHITE">
          <font>
-            <Font name="Dosis ExtraBold" size="61.0" />
+            <Font name="Dosis ExtraBold" size="48.0" />
          </font>
          <BorderPane.margin>
-            <Insets top="15.0" />
+            <Insets left="80.0" right="80.0" top="15.0" />
          </BorderPane.margin></Label>
     </top>
     <center>

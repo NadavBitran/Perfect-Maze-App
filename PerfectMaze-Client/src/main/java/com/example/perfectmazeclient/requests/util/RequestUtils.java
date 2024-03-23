@@ -4,6 +4,7 @@ import com.example.perfectmazeclient.requests.communication.Header;
 import com.example.perfectmazeclient.requests.communication.Request;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 
 public class RequestUtils {
     private static Gson gson = new Gson();
@@ -16,6 +17,6 @@ public class RequestUtils {
     }
 
     private static <T> JsonElement initializeBody(T body) {
-        return gson.toJsonTree(body);
+        return (body == null) ? JsonNull.INSTANCE : gson.toJsonTree(body);
     }
 }

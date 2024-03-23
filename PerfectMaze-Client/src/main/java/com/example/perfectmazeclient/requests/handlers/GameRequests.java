@@ -1,13 +1,13 @@
 package com.example.perfectmazeclient.requests.handlers;
 
-import com.example.perfectmazeclient.constants.MazeDifficulty;
 import com.example.perfectmazeclient.dm.Game;
 import com.example.perfectmazeclient.dm.PerfectMazeBoard;
 import com.example.perfectmazeclient.exceptions.RequestFailed;
 import com.example.perfectmazeclient.requests.communication.Response;
+import com.example.perfectmazeclient.requests.communication.util.ResponseProperties;
 import com.example.perfectmazeclient.requests.sender.Sender;
-import com.example.perfectmazeclient.util.CurrentGame;
-import com.example.perfectmazeclient.util.LoggedUser;
+import com.example.perfectmazeclient.containers.CurrentGameContainer;
+import com.example.perfectmazeclient.containers.CurrentLoggedUserContainer;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -24,53 +24,54 @@ public class GameRequests {
 
         JsonObject body = response.getBody().getAsJsonObject();
 
-        String status = body.get("status").getAsString();
-        String message = body.get("message").getAsString();
+        String status = body.get(ResponseProperties.STATUS).getAsString();
+        String message = body.get(ResponseProperties.MESSAGE).getAsString();
 
-        if(!status.equals("success")) throw new RequestFailed(message);
+        if(!status.equals(ResponseProperties.STATUS_SUCCESS)) throw new RequestFailed(message);
 
-        maze = gson.fromJson(body.get("mazeBoard"), PerfectMazeBoard.class);
+        maze = gson.fromJson(body.get(ResponseProperties.MAZE_BOARD), PerfectMazeBoard.class);
 
-        Game game = new Game();
-        game.setMazeBoard(maze);
-
-        CurrentGame.setCurrentGame(game);
+        CurrentGameContainer.setCurrentGame(new Game(maze));
     }
     public static void handleMazeSolvedRequest(PerfectMazeBoard maze, int time) throws RequestFailed {
 
         Game game = new Game(maze, time);
+        game.setUserId(CurrentLoggedUserContainer.getLoggedUser().getUserId());
+        game.setUserEmail(CurrentLoggedUserContainer.getLoggedUser().getEmail());
 
         Response response = Sender.sendRequest(SAVE_GAME, game);
 
         JsonObject body = response.getBody().getAsJsonObject();
 
-        String status = body.get("status").getAsString();
-        String message = body.get("message").getAsString();
+        String status = body.get(ResponseProperties.STATUS).getAsString();
+        String message = body.get(ResponseProperties.MESSAGE).getAsString();
 
-        if(!status.equals("success")) throw new RequestFailed(message);
+        if(!status.equals(ResponseProperties.STATUS_SUCCESS)) throw new RequestFailed(message);
 
-        String gameId = body.get("gameId").getAsString();
+        String gameId = body.get(ResponseProperties.GAME_ID).getAsString();
 
         game.setGameId(gameId);
-        CurrentGame.setCurrentGame(game);
+        CurrentGameContainer.setCurrentGame(game);
     }
     public static void handleMazeImprovementRequest(String gameId, int improvedTime) throws RequestFailed {
 
         Game game = new Game();
         game.setGameId(gameId);
         game.setTimeToSolve(improvedTime);
-        game.setUserId(LoggedUser.getLoggedUser().getUserId());
+        game.setUserId(CurrentLoggedUserContainer.getLoggedUser().getUserId());
+        game.setUserEmail(CurrentLoggedUserContainer.getLoggedUser().getEmail());
 
         Response response = Sender.sendRequest(UPDATE_GAME_TIME, game);
 
         JsonObject body = response.getBody().getAsJsonObject();
 
-        String status = body.get("status").getAsString();
-        String message = body.get("message").getAsString();
+        String status = body.get(ResponseProperties.STATUS).getAsString();
+        String message = body.get(ResponseProperties.MESSAGE).getAsString();
 
-        if(!status.equals("success")) throw new RequestFailed(message);
+        if(!status.equals(ResponseProperties.STATUS_SUCCESS)) throw new RequestFailed(message);
 
-        game.setTimeToSolve(improvedTime);
-        CurrentGame.setCurrentGame(game);
+        Game currentGame = CurrentGameContainer.getCurrentGame();
+        currentGame.setTimeToSolve(improvedTime);
+        CurrentGameContainer.setCurrentGame(currentGame);
     }
 }

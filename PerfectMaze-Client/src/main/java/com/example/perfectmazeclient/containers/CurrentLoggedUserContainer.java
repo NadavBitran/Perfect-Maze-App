@@ -1,19 +1,17 @@
-package com.example.perfectmazeclient.util;
+package com.example.perfectmazeclient.containers;
 
 import com.example.perfectmazeclient.dm.User;
 
-public final class LoggedUser {
+public final class CurrentLoggedUserContainer {
     private static User loggedUser;
 
-    private LoggedUser() {}
+    private CurrentLoggedUserContainer() {}
 
     public static User getLoggedUser() {
         return loggedUser;
     }
 
     public static void setLoggedUser(User user) {
-        if (loggedUser == null) {
-            loggedUser = user;
-        }
+        loggedUser = user;
     }
 }

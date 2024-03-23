@@ -6,9 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginValidation {
-    public static boolean validateLogin(String username, String password) {
-        if (username == null || username.isEmpty()) {
-            AlertError.showAlertError("Error", "Login", "Please enter a username.");
+    public static boolean validateLogin(String email, String password) {
+        if (email == null || email.isEmpty()) {
+            AlertError.showAlertError("Error", "Login", "Please enter a email.");
             return false;
         }
         if (password == null || password.isEmpty()) {

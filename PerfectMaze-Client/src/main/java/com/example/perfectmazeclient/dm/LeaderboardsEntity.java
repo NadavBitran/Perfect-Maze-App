@@ -3,11 +3,11 @@ package com.example.perfectmazeclient.dm;
 public class LeaderboardsEntity {
 
     private String username;
-    private int mazesCompleted;
+    private int gamesCount;
 
-    public LeaderboardsEntity(String username, int mazesCompleted) {
+    public LeaderboardsEntity(String username, int gamesCount) {
         this.username = username;
-        this.mazesCompleted = mazesCompleted;
+        this.gamesCount = gamesCount;
     }
 
     public String getUsername() {
@@ -18,11 +18,11 @@ public class LeaderboardsEntity {
         this.username = username;
     }
 
-    public int getMazesCompleted() {
-        return mazesCompleted;
+    public int getGamesCount() {
+        return gamesCount;
     }
 
-    public void setMazesCompleted(int mazesCompleted) {
-        this.mazesCompleted = mazesCompleted;
+    public void setGamesCount(int gamesCount) {
+        this.gamesCount = gamesCount;
     }
 }

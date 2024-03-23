@@ -1,6 +1,7 @@
 package com.example.perfectmazeclient.views;
 
 import com.example.perfectmazeclient.constants.FXMLPaths;
+import com.example.perfectmazeclient.containers.CurrentLoggedUserContainer;
 import com.example.perfectmazeclient.util.PageLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ public class GameOptionsController {
     }
 
     public void onSignOutButtonClicked(ActionEvent actionEvent) {
+        CurrentLoggedUserContainer.setLoggedUser(null);
         PageLoader.loadPage(FXMLPaths.MAIN_MENU, actionEvent, getClass());
     }
 }

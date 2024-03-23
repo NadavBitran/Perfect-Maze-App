@@ -18,21 +18,21 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     @FXML
-    private TextField usernameField;
+    private TextField emailField;
     @FXML
     private PasswordField passwordField;
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) {
-        String username = usernameField.getText();
+        String email = emailField.getText();
         String password = passwordField.getText();
 
-        if(!LoginValidation.validateLogin(username, password)) return;
+        if(!LoginValidation.validateLogin(email, password)) return;
 
         try
         {
-            UserRequests.handleLoginRequest(username, password);
-            PageLoader.loadPage(FXMLPaths.MAIN_MENU, event, getClass());
+            UserRequests.handleLoginRequest(email, password);
+            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, event, getClass());
         }
         catch (RequestFailed e)
         {
@@ -51,9 +51,9 @@ public class LoginController implements Initializable {
     }
 
     private void clearFields() {
-        usernameField.setText("");
+        emailField.setText("");
         passwordField.setText("");
-        usernameField.setFocusTraversable(false);
+        emailField.setFocusTraversable(false);
         passwordField.setFocusTraversable(false);
     }
 }
