@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a70b303d-85fb-448f-8640-5a64edb54fae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/HandleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/HandleRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2dYEuTvabUdXQ2och2j24wNxaDC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,24 +38,98 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.DemoClient.executor": "Run",
+    "Application.Driver.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.All in PerfectMaze-Server.executor": "Run",
+    "JUnit.GameServiceTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/MyPrograms/IntelliJ/JavaProject/PerfectMaze-Server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nadav\OneDrive\Desktop\PerfectMaze-App\PerfectMaze-Server\PerfectMaze\lib" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DemoClient">
+    <configuration name="DemoClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DemoClient" />
+      <module name="PerfectMaze-Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Driver" />
+      <module name="PerfectMaze-Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in PerfectMaze-Server" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PerfectMaze-Server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PerfectMaze-Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hit.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.hit.service" />
+      <option name="MAIN_CLASS_NAME" value="com.hit.service.GameServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DemoClient" />
+        <item itemvalue="Application.Driver" />
+        <item itemvalue="JUnit.All in PerfectMaze-Server" />
+        <item itemvalue="JUnit.GameServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,8 +139,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710176833877</updated>
+      <workItem from="1711189485254" duration="2129000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
