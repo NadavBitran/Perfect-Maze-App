@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5878413-746c-4fc4-9f5a-5337d92420a9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/resources/datasourcegames.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/resources/datasourceusers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/images/mainMenuBackground.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,16 +27,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

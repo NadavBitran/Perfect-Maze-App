@@ -1,6 +1,6 @@
 .mainMenuWindow
 {
-       -fx-background-image: url("../images/mainMenuBackground.gif");
+       -fx-background-image: url("../images/mainMenuBackground.png");
        -fx-background-size: cover;
        -fx-background-position: center;
        -fx-background-repeat: no-repeat;
