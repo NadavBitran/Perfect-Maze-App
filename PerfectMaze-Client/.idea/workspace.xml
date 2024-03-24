@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f1fd871-821c-4894-bde2-3c157ee8e066" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/util/AlertError.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/validation/LoginValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/validation/LoginValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/validation/MazeSetupValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/validation/MazeSetupValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/LeaderboardsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/LeaderboardsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/MazeSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/MazeSetupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/maze-setup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/maze-setup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/login-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/login-page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/maze-setup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/maze-setup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/register-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/register-page.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PerfectMaze-Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Server/PerfectMaze/src/main/resources/datasourcegames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Server/PerfectMaze/src/main/resources/datasourcegames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Server/PerfectMaze/src/main/resources/datasourcegames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Server/PerfectMaze/src/main/resources/datasourceusers.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +43,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40689656",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40689656&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.perfectmazeclient" />
