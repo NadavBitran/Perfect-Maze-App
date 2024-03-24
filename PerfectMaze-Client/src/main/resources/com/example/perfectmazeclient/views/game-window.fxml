@@ -10,6 +10,14 @@
       <StackPane.margin>
          <Insets top="50.0" />
       </StackPane.margin></GridPane>
+   <Label text="Error Occured, Press To Exit" textFill="#dc3545" fx:id="errorLabel">
+      <font>
+         <Font name="Dosis ExtraBold" size="32.0" />
+      </font>
+      <StackPane.margin>
+         <Insets top="-50.0" />
+      </StackPane.margin>
+   </Label>
    <Label fx:id="pressToStart" text="Press To Start" textFill="#007bff">
       <font>
          <Font name="Dosis ExtraBold" size="68.0" />

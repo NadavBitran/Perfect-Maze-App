@@ -12,36 +12,32 @@ import javafx.stage.Window;
 import java.io.IOException;
 
 public class PageLoader {
-    public static void loadPage(String fxmlPath, Event event, Class c)
+    private static Stage primaryStage;
+    private static Class c;
+
+    public static void init(Stage stage, Class nc) {
+        primaryStage = stage;
+        primaryStage.setResizable(false);
+        primaryStage.setMaximized(false);
+        primaryStage.setTitle("Perfect Maze");
+        c = nc;
+    }
+    public static void loadPage(String fxmlPath)
     {
-        try {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(c.getResource(fxmlPath));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public static void loadPage(String fxmlPath, Window window, Class c) {
-        try {
-            FXMLLoader loader = new FXMLLoader(c.getResource(fxmlPath));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-
-            Stage stage = (Stage) window;
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public static void closePage(ActionEvent event)

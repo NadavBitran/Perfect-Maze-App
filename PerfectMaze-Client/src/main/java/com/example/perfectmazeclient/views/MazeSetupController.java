@@ -18,7 +18,7 @@ public class MazeSetupController {
     private ChoiceBox<String> generatorAlgorithmChoiceBox;
     @FXML
     public void onBackButtonClicked(ActionEvent actionEvent) {
-        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
+        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
     }
 
     public void onStartButtonClicked(ActionEvent actionEvent) {
@@ -33,7 +33,7 @@ public class MazeSetupController {
         game.getMazeBoard().setRows(MazeDifficulty.DIFFICULTY_MAP.get(mazeSize));
         CurrentGameContainer.setCurrentGame(game);
 
-        PageLoader.loadPage(FXMLPaths.GAME_WINDOW, actionEvent, getClass());
+        PageLoader.loadPage(FXMLPaths.GAME_WINDOW);
     }
 
 }

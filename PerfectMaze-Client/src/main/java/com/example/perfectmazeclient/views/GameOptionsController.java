@@ -10,16 +10,16 @@ public class GameOptionsController {
 
     @FXML
     void onStartMazeButtonClicked(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.MAZE_SETUP, event, getClass());
+        PageLoader.loadPage(FXMLPaths.MAZE_SETUP);
     }
 
     @FXML
     void onViewLeaderboardButtonClicked(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.LEADERBOARD, event, getClass());
+        PageLoader.loadPage(FXMLPaths.LEADERBOARD);
     }
 
     public void onSignOutButtonClicked(ActionEvent actionEvent) {
         CurrentLoggedUserContainer.setLoggedUser(null);
-        PageLoader.loadPage(FXMLPaths.MAIN_MENU, actionEvent, getClass());
+        PageLoader.loadPage(FXMLPaths.MAIN_MENU);
     }
 }

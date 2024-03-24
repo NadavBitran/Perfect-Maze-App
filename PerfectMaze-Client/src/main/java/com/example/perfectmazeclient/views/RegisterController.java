@@ -30,7 +30,7 @@ public class RegisterController implements Initializable  {
         try
         {
             UserRequests.handleRegisterRequest(email, password, username);
-            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
+            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
         }
         catch (RequestFailed e)
         {
@@ -41,7 +41,7 @@ public class RegisterController implements Initializable  {
 
     @FXML
     protected void onBackButtonClick(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.MAIN_MENU, event, getClass());
+        PageLoader.loadPage(FXMLPaths.MAIN_MENU);
     }
 
     @Override

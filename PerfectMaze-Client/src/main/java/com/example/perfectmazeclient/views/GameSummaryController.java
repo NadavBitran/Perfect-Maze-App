@@ -34,12 +34,12 @@ public class GameSummaryController implements Initializable {
     public void onContinueButtonClicked(ActionEvent actionEvent) {
         CurrentGameContainer.setCurrentGame(null);
         CurrentGameContainer.setIsTryingToImprove(false);
-        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, actionEvent, getClass());
+        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
     }
 
     public void onRetryButtonClicked(ActionEvent actionEvent) {
         CurrentGameContainer.setIsTryingToImprove(true);
-        PageLoader.loadPage(FXMLPaths.GAME_WINDOW, actionEvent, getClass());
+        PageLoader.loadPage(FXMLPaths.GAME_WINDOW);
     }
 
     @Override

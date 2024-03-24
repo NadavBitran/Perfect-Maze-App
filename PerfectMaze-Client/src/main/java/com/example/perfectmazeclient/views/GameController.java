@@ -40,18 +40,29 @@ public class GameController implements Initializable {
     private Label youWon;
     @FXML
     private Label pressToStart;
+    @FXML
+    private Label errorLabel;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gameStatus = GameStatus.NOT_STARTED;
 
-        if (!CurrentGameContainer.isTryingToImprove()) initializeMazeDataFromServer();
+        try
+        {
+            if (!CurrentGameContainer.isTryingToImprove()) initializeMazeDataFromServer();
 
-        gameBoard = new GameBoard(CurrentGameContainer.getCurrentGame().getMazeBoard());
+            gameBoard = new GameBoard(CurrentGameContainer.getCurrentGame().getMazeBoard());
 
-        initializeGameWindow();
-        initializeWindowEntities();
+            initializeGameWindow();
+            initializeWindowEntities();
+        }
+        catch (RequestFailed e)
+        {
+            gameStatus = GameStatus.ERROR;
+            initializeWindowEntities();
+            initializeGameLoadError();
+        }
     }
 
     private void initializeGameWindow() {
@@ -89,6 +100,14 @@ public class GameController implements Initializable {
         mazeGridPane.setFocusTraversable(true);
         mazeGridPane.setOnKeyPressed(this::handleKeyPress);
         youWon.setVisible(false);
+        errorLabel.setVisible(false);
+    }
+
+    private void initializeGameLoadError()
+    {
+        youWon.setVisible(false);
+        pressToStart.setVisible(false);
+        errorLabel.setVisible(true);
     }
 
 
@@ -105,6 +124,9 @@ public class GameController implements Initializable {
                 break;
             case FINISHED:
                 concludeGame();
+                break;
+            case ERROR:
+                concludeError();
                 break;
         }
     }
@@ -155,17 +177,11 @@ public class GameController implements Initializable {
     }
 
 
-    private void initializeMazeDataFromServer() {
-        try
-        {
-            GameRequests.handleMazeGenerationRequest(
+    private void initializeMazeDataFromServer() throws RequestFailed {
+        GameRequests.handleMazeGenerationRequest(
                     CurrentGameContainer.getCurrentGame().getMazeBoard().getRows(),
                     CurrentGameContainer.getCurrentGame().getMazeBoard().getAlgorithm());
-        }
-        catch (RequestFailed e)
-        {
-            AlertError.showAlertError("Error", "Maze Generation", e.getMessage(), FXMLPaths.GAME_OPTIONS);
-        }
+
     }
 
     private void concludeGame() {
@@ -183,12 +199,18 @@ public class GameController implements Initializable {
                 GameRequests.handleMazeSolvedRequest(CurrentGameContainer.getCurrentGame().getMazeBoard(), timer.getSecondsElapsed());
             }
 
-            PageLoader.loadPage(FXMLPaths.GAME_RESULTS_SUMMARY, mazeGridPane.getScene().getWindow(), getClass());
+            PageLoader.loadPage(FXMLPaths.GAME_RESULTS_SUMMARY);
         }
         catch (RequestFailed e)
         {
-            AlertError.showAlertError("Error", "Game Results", e.getMessage(), FXMLPaths.GAME_OPTIONS);
+            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
+            AlertError.showAlertError("Error", "Game Results", e.getMessage());
         }
+    }
+
+    private void concludeError() {
+        CurrentGameContainer.setIsTryingToImprove(false);
+        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
     }
 
 }

@@ -32,7 +32,7 @@ public class LoginController implements Initializable {
         try
         {
             UserRequests.handleLoginRequest(email, password);
-            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS, event, getClass());
+            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
         }
         catch (RequestFailed e)
         {
@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
 
     @FXML
     protected void onBackButtonClick(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.MAIN_MENU, event, getClass());
+        PageLoader.loadPage(FXMLPaths.MAIN_MENU);
     }
 
     @Override
