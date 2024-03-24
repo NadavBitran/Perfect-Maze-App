@@ -9,7 +9,6 @@ import com.example.perfectmazeclient.game.GameStatus;
 import com.example.perfectmazeclient.game.GameTimer;
 import com.example.perfectmazeclient.game.Player;
 import com.example.perfectmazeclient.requests.handlers.GameRequests;
-import com.example.perfectmazeclient.util.AlertError;
 import com.example.perfectmazeclient.containers.CurrentGameContainer;
 import com.example.perfectmazeclient.util.PageLoader;
 import javafx.fxml.FXML;
@@ -61,7 +60,7 @@ public class GameController implements Initializable {
         {
             gameStatus = GameStatus.ERROR;
             initializeWindowEntities();
-            initializeGameLoadError();
+            initializeGameError();
         }
     }
 
@@ -103,7 +102,7 @@ public class GameController implements Initializable {
         errorLabel.setVisible(false);
     }
 
-    private void initializeGameLoadError()
+    private void initializeGameError()
     {
         youWon.setVisible(false);
         pressToStart.setVisible(false);
@@ -203,8 +202,8 @@ public class GameController implements Initializable {
         }
         catch (RequestFailed e)
         {
-            PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
-            AlertError.showAlertError("Error", "Game Results", e.getMessage());
+            gameStatus = GameStatus.ERROR;
+            initializeGameError();
         }
     }
 

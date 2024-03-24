@@ -37,7 +37,7 @@ public class Sender {
         }
         catch (IOException e)
         {
-            return ResponseUtils.buildResponse("failed to send request", "failed");
+            return ResponseUtils.buildResponse("Error: failed to send request", "failed");
         }
     }
 }

@@ -14,10 +14,25 @@
             <font>
                <Font name="System Bold" size="20.0" />
             </font></TextField>
+         <Label fx:id="emailFieldError" prefWidth="297.0" text="Empty Field" textFill="#dc3545" wrapText="true">
+            <font>
+               <Font name="Dosis ExtraBold" size="16.0" />
+            </font>
+         </Label>
             <PasswordField fx:id="passwordField" prefHeight="50.0" prefWidth="296.0" promptText="Password" styleClass="text-field">
             <font>
                <Font name="System Bold" size="20.0" />
             </font></PasswordField>
+         <Label fx:id="passwordFieldError" prefWidth="297.0" text="Empty Field" textFill="#dc3545" wrapText="true">
+            <font>
+               <Font name="Dosis ExtraBold" size="16.0" />
+            </font>
+         </Label>
+         <Label fx:id="serverRequestFieldError" prefWidth="297.0" text="Invalid Credentials" textFill="#dc3545" wrapText="true">
+            <font>
+               <Font name="Dosis ExtraBold" size="16.0" />
+            </font>
+         </Label>
 
             <Button onAction="#onLoginButtonClick" prefHeight="50.0" prefWidth="297.0" styleClass="btn-primary" text="Login" textFill="WHITE">
             <font>

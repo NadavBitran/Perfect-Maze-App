@@ -5,7 +5,6 @@ import com.example.perfectmazeclient.dm.LeaderboardsEntity;
 import com.example.perfectmazeclient.constants.FXMLPaths;
 import com.example.perfectmazeclient.exceptions.RequestFailed;
 import com.example.perfectmazeclient.requests.handlers.LeaderboardRequests;
-import com.example.perfectmazeclient.util.AlertError;
 import com.example.perfectmazeclient.util.PageLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +16,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;

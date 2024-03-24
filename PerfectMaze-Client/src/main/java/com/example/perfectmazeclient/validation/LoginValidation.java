@@ -1,60 +1,118 @@
 package com.example.perfectmazeclient.validation;
 
-import com.example.perfectmazeclient.util.AlertError;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.example.perfectmazeclient.validation.util.Validator;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class LoginValidation {
-    public static boolean validateLogin(String email, String password) {
-        if (email == null || email.isEmpty()) {
-            AlertError.showAlertError("Error", "Login", "Please enter a email.");
-            return false;
-        }
-        if (password == null || password.isEmpty()) {
-            AlertError.showAlertError("Error", "Login", "Please enter a password.");
-            return false;
-        }
-        return true;
+
+    private static final String FIELD_ERROR_CLASS = "field-error";
+    private Label emailFieldError;
+    private Label passwordFieldError;
+    private Label usernameFieldError;
+    private TextField emailField;
+    private TextField passwordField;
+    private TextField usernameField;
+    public LoginValidation(Label emailEmptyFieldError, Label passwordEmptyFieldError, TextField emailField, PasswordField passwordField)
+    {
+        this.emailFieldError = emailEmptyFieldError;
+        this.passwordFieldError = passwordEmptyFieldError;
+        this.emailField = emailField;
+        this.passwordField = passwordField;
     }
 
-    public static boolean validateRegister(String email, String username, String password) {
-        if (email == null || email.isEmpty()) {
-            AlertError.showAlertError("Error", "Register", "Please enter an email.");
-            return false;
+    public LoginValidation(Label emailEmptyFieldError, Label passwordEmptyFieldError, Label usernameEmptyFieldError, TextField emailField, PasswordField passwordField, TextField usernameField)
+    {
+        this.emailFieldError = emailEmptyFieldError;
+        this.passwordFieldError = passwordEmptyFieldError;
+        this.usernameFieldError = usernameEmptyFieldError;
+        this.emailField = emailField;
+        this.passwordField = passwordField;
+        this.usernameField = usernameField;
+    }
+    public boolean validateLogin() {
+
+        boolean isValid = true;
+
+        String email = emailField.getText();
+        String password = passwordField.getText();
+
+        resetErrorFields();
+
+        if (Validator.isNullOrEmpty(email))
+        {
+            showErrorField(emailField, emailFieldError, "Please enter an email.");
+            isValid = false;
         }
-        if (username == null || username.isEmpty()) {
-            AlertError.showAlertError("Error", "Register", "Please enter a username.");
-            return false;
+        if (Validator.isNullOrEmpty(password)) {
+            showErrorField(passwordField, passwordFieldError, "Please enter a password.");
+            isValid = false;
         }
-        if (password == null || password.isEmpty()) {
-            AlertError.showAlertError("Error", "Register", "Please enter a password.");
-            return false;
-        }
-        if (!isValidEmail(email)) {
-            AlertError.showAlertError("Error", "Register", "Invalid email format.");
-            return false;
-        }
-        if (!isValidPassword(password)) {
-            AlertError.showAlertError("Error", "Register", "Password must contain at least 6 characters, one uppercase letter, one lowercase letter, one number, and one special character.");
-            return false;
-        }
-        return true;
+        return isValid;
     }
 
-    private static boolean isValidEmail(String email) {
-        // Regular expression for email validation
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+    public boolean validateRegister() {
+
+        boolean isValid = true;
+
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        String username = usernameField.getText();
+
+        resetErrorFields();
+
+        if (Validator.isNullOrEmpty(email)) {
+            showErrorField(emailField, emailFieldError, "Please enter an email.");
+            isValid = false;
+        }
+        if (Validator.isNullOrEmpty(username)) {
+            showErrorField(usernameField, usernameFieldError, "Please enter a username.");
+            isValid = false;
+        }
+        if (Validator.isNullOrEmpty(password)) {
+            showErrorField(passwordField, passwordFieldError, "Please enter a password.");
+            isValid = false;
+        }
+        if (!Validator.isNullOrEmpty(email) && !Validator.isValidEmail(email)) {
+            showErrorField(emailField, emailFieldError, "Invalid email format.");
+            isValid = false;
+        }
+        if (!Validator.isNullOrEmpty(password) && !Validator.isValidPassword(password)) {
+            showErrorField(passwordField, passwordFieldError, "Password must contain at least: \n - 6 characters \n - 1 uppercase letter \n - 1 lowercase letter \n - 1 number \n - 1 special character.");
+            isValid = false;
+        }
+        return isValid;
     }
 
-    private static boolean isValidPassword(String password) {
-        // Regular expression for password validation
-        String passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$";
-        Pattern pattern = Pattern.compile(passwordRegex);
-        Matcher matcher = pattern.matcher(password);
-        return matcher.matches();
+    private void resetErrorFields()
+    {
+        emailFieldError.setVisible(false);
+        emailFieldError.setManaged(false);
+
+        passwordFieldError.setVisible(false);
+        passwordFieldError.setManaged(false);
+
+        if(usernameFieldError != null)
+        {
+            usernameFieldError.setVisible(false);
+            usernameFieldError.setManaged(false);
+        }
+
+        emailField.getStyleClass().remove(FIELD_ERROR_CLASS);
+        passwordField.getStyleClass().remove(FIELD_ERROR_CLASS);
+
+        if(usernameField != null)
+        {
+            usernameField.getStyleClass().remove(FIELD_ERROR_CLASS);
+        }
+    }
+
+    private void showErrorField(TextField field, Label errorField, String errorMessage)
+    {
+        field.getStyleClass().add(FIELD_ERROR_CLASS);
+        errorField.setVisible(true);
+        errorField.setManaged(true);
+        errorField.setText(errorMessage);
     }
 }
