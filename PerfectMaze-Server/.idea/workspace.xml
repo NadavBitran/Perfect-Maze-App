@@ -6,46 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b5878413-746c-4fc4-9f5a-5337d92420a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/MazeDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/MazeDifficulty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/WindowSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/WindowSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/LeaderboardsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/LeaderboardsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/dm/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/GameRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/GameRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/LeaderboardRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/LeaderboardRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/UserRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/handlers/UserRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/util/RequestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/util/RequestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/util/CurrentGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/containers/CurrentGameContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/util/LoggedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/containers/CurrentLoggedUserContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/util/PageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/util/PageLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/validation/LoginValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/validation/LoginValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/validation/MazeSetupValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/validation/MazeSetupValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameOptionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameOptionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameSummaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameSummaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/LeaderboardsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/LeaderboardsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/MazeSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/MazeSetupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-results-summary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-results-summary.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/login-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/login-page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/DemoClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/PerfectMazeBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/util/GameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/dm/util/GameUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/HandleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/HandleRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/util/RequestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/server/util/RequestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/util/PerfectMazeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/java/com/hit/service/util/PerfectMazeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/resources/datasourcegames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/resources/datasourceusers.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/GameServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/IServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/IServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/LeaderboardServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/LeaderboardServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/PerfectMaze/src/main/test/com/hit/service/UtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +31,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
