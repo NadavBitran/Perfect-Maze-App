@@ -1,65 +1,72 @@
 package com.example.perfectmazeclient.views;
 
+import com.example.perfectmazeclient.constants.FXMLPaths;
 import com.example.perfectmazeclient.constants.WindowSize;
-import com.example.perfectmazeclient.dm.PerfectMazeBoard;
 import com.example.perfectmazeclient.dm.Point;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import com.example.perfectmazeclient.exceptions.RequestFailed;
+import com.example.perfectmazeclient.game.GameBoard;
+import com.example.perfectmazeclient.game.GameStatus;
+import com.example.perfectmazeclient.game.GameTimer;
+import com.example.perfectmazeclient.game.Player;
+import com.example.perfectmazeclient.requests.handlers.GameRequests;
+import com.example.perfectmazeclient.containers.CurrentGameContainer;
+import com.example.perfectmazeclient.util.PageLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
-    private final int RECTANGLE_DEFAULT_SIZE = 20;
-    private final Color PLAYER_COLOR = Color.rgb(0, 123, 255);
-    private int rectangleWidth = RECTANGLE_DEFAULT_SIZE;
-    private int rectangleHeight = RECTANGLE_DEFAULT_SIZE;
-    private PerfectMazeBoard perfectMazeBoard;
-    private Point currentPlayerLocation;
-    private Rectangle player;
+    private int rectangleWidth;
+    private int rectangleHeight;
+    private Player player;
+    private GameBoard gameBoard;
+    private GameTimer timer;
+    private GameStatus gameStatus;
     @FXML
     private GridPane mazeGridPane;
-    private boolean gameStarted = false;
-    private boolean gameEnded = false;
     @FXML
     private Label time;
-    int secondsElapsed  = 0;
-
     @FXML
     private Label youWon;
     @FXML
     private Label pressToStart;
+    @FXML
+    private Label errorLabel;
 
-    private Timeline timer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initializeFakeMazeData();
-        setMaze();
-        mazeGridPane.setFocusTraversable(true);
-        mazeGridPane.setOnKeyPressed(this::handleKeyPress);
-        youWon.setVisible(false);
+        gameStatus = GameStatus.NOT_STARTED;
+
+        try
+        {
+            if (!CurrentGameContainer.isTryingToImprove()) initializeMazeDataFromServer();
+
+            gameBoard = new GameBoard(CurrentGameContainer.getCurrentGame().getMazeBoard());
+
+            initializeGameWindow();
+            initializeWindowEntities();
+        }
+        catch (RequestFailed e)
+        {
+            gameStatus = GameStatus.ERROR;
+            initializeWindowEntities();
+            initializeGameError();
+        }
     }
-    private void setMaze() {
-        int numRows = perfectMazeBoard.getRows();
-        int numCols = perfectMazeBoard.getColumns();
+
+    private void initializeGameWindow() {
+        int numRows = gameBoard.getRowsWithWalls();
+        int numCols = gameBoard.getColsWithWalls();
 
         rectangleWidth =  WindowSize.WINDOW_WIDTH / numCols;
         rectangleHeight = WindowSize.WINDOW_HEIGHT / numRows;
@@ -67,67 +74,86 @@ public class GameController implements Initializable {
         for(int i = 0; i < numRows; i++) {
             for(int j = 0; j < numCols; j++) {
                 Rectangle cell = new Rectangle(rectangleWidth, rectangleHeight);
-                cell.setFill(perfectMazeBoard.getMaze()[i][j] == 1 ? Color.WHITE : Color.BLACK);
+                cell.setFill(gameBoard.getMaze()[i][j] == 1 ? Color.WHITE : Color.BLACK);
                 mazeGridPane.add(cell, j, i);
             }
         }
 
-        currentPlayerLocation = new Point(perfectMazeBoard.getStartingLocation().getX(), perfectMazeBoard.getStartingLocation().getY());
-        player = new Rectangle(rectangleWidth, rectangleHeight, PLAYER_COLOR);
+        player = new Player(
+                rectangleWidth,
+                rectangleHeight,
+                gameBoard.getStartingLocation());
 
-        player.setWidth(rectangleWidth);
-        player.setHeight(rectangleHeight);
+        mazeGridPane.add(
+                player.getPlayerShape(),
+                gameBoard.getStartingLocation().getX(),
+                gameBoard.getStartingLocation().getY());
 
-        mazeGridPane.add(player, perfectMazeBoard.getStartingLocation().getX(), perfectMazeBoard.getStartingLocation().getY());
+        timer = new GameTimer(time);
+
     }
 
-    private void setTimer() {
-        timer = new Timeline(
-                new KeyFrame(Duration.seconds(1), event -> updateTimer())
-        );
-        timer.setCycleCount(Animation.INDEFINITE);
-        timer.play();
+
+    private void initializeWindowEntities()
+    {
+        mazeGridPane.setFocusTraversable(true);
+        mazeGridPane.setOnKeyPressed(this::handleKeyPress);
+        youWon.setVisible(false);
+        errorLabel.setVisible(false);
     }
 
-    private void updateTimer() {
-        secondsElapsed++;
-        int minutes = (secondsElapsed % 3600) / 60;
-        int seconds = secondsElapsed % 60;
-
-        String formattedTime = String.format("%02d:%02d", minutes, seconds);
-
-        time.setText("Time: " + formattedTime);
+    private void initializeGameError()
+    {
+        youWon.setVisible(false);
+        pressToStart.setVisible(false);
+        errorLabel.setVisible(true);
     }
 
-    private void stopTimer() {
-        timer.stop();
-    }
 
 
     private void handleKeyPress(KeyEvent event) {
-        if (!gameStarted) {
-            startGame();
-            return;
-        }
 
-        if(gameEnded){
-            toGoSummeryPage();
-            return;
+        switch(gameStatus)
+        {
+            case NOT_STARTED:
+                startGame();
+                break;
+            case IN_PROGRESS:
+                playerMoved(event.getCode());
+                break;
+            case FINISHED:
+                concludeGame();
+                break;
+            case ERROR:
+                concludeError();
+                break;
         }
-
-        playerMoved(event.getCode());
     }
 
     private void startGame() {
-        gameStarted = true;
         pressToStart.setVisible(false);
-        setTimer();
+        timer.setTimer();
+        gameStatus = GameStatus.IN_PROGRESS;
     }
+    private void endGame() {
+        youWon.setVisible(true);
+        timer.stopTimer();
+        gameStatus = GameStatus.FINISHED;
+    }
+    private void updateMove(Point newPlayerLocation) {
+        player.setCurrentPlayerLocation(newPlayerLocation);
+        mazeGridPane.getChildren().remove(player.getPlayerShape());
+        mazeGridPane.add(player.getPlayerShape(), newPlayerLocation.getX(), newPlayerLocation.getY());
+    }
+
     public void playerMoved(KeyCode keycode)
     {
         int dx,dy;
+
         dx = dy = 0;
-        switch (keycode) {
+
+        switch (keycode)
+        {
             case UP:
                 dy = -1;
                 break;
@@ -142,84 +168,48 @@ public class GameController implements Initializable {
                 break;
         }
 
-        if(isWinningMove(currentPlayerLocation.getX() + dx, currentPlayerLocation.getY() + dy)){
-            youWon.setVisible(true);
-            stopTimer();
-            gameEnded = true;
+        Point newPlayerLocation = new Point(player.getCurrentPlayerLocation().getX() + dx, player.getCurrentPlayerLocation().getY() + dy);
+
+        if(gameBoard.isWinningMove(newPlayerLocation)) endGame();
+
+        if(gameBoard.isValidMove(newPlayerLocation)) updateMove(newPlayerLocation);
+    }
+
+
+    private void initializeMazeDataFromServer() throws RequestFailed {
+        GameRequests.handleMazeGenerationRequest(
+                    CurrentGameContainer.getCurrentGame().getMazeBoard().getRows(),
+                    CurrentGameContainer.getCurrentGame().getMazeBoard().getAlgorithm());
+
+    }
+
+    private void concludeGame() {
+        try
+        {
+            if (CurrentGameContainer.isTryingToImprove())
+            {
+                int timeImprovement = CurrentGameContainer.getCurrentGame().getTimeToSolve() - timer.getSecondsElapsed();
+                CurrentGameContainer.setTimeImprovement(timeImprovement);
+
+                if (timeImprovement > 0) GameRequests.handleMazeImprovementRequest(CurrentGameContainer.getCurrentGame().getGameId(), timer.getSecondsElapsed());
+            }
+            else
+            {
+                GameRequests.handleMazeSolvedRequest(CurrentGameContainer.getCurrentGame().getMazeBoard(), timer.getSecondsElapsed());
+            }
+
+            PageLoader.loadPage(FXMLPaths.GAME_RESULTS_SUMMARY);
         }
-
-        if(isValidMove(currentPlayerLocation.getX() + dx, currentPlayerLocation.getY() + dy)){
-
-            currentPlayerLocation.setX(currentPlayerLocation.getX() + dx);
-            currentPlayerLocation.setY(currentPlayerLocation.getY() + dy);
-
-            mazeGridPane.getChildren().remove(player);
-            mazeGridPane.add(player, currentPlayerLocation.getX(), currentPlayerLocation.getY());
-        }
-    }
-
-    public boolean isValidMove(int x, int y)
-    {
-        return x >= 0 && x < perfectMazeBoard.getColumns() && y >= 0 && y < perfectMazeBoard.getRows() && perfectMazeBoard.getMaze()[y][x] == 1;
-    }
-
-    public boolean isWinningMove(int x, int y)
-    {
-        return perfectMazeBoard.getEndingLocation().equals(new Point(x, y));
-    }
-
-
-    private void toGoSummeryPage() {
-        try {
-            Parent registerParent = FXMLLoader.load(getClass().getResource("game-results-summary.fxml"));
-            Scene registerScene = new Scene(registerParent);
-
-            Stage window = (Stage) mazeGridPane.getScene().getWindow();
-
-            window.setScene(registerScene);
-            window.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        catch (RequestFailed e)
+        {
+            gameStatus = GameStatus.ERROR;
+            initializeGameError();
         }
     }
 
-    private void initializeFakeMazeData() {
-        int[][] maze = {
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
-                {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
-                {0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0},
-                {0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0},
-                {0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0},
-                {0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0},
-                {0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0},
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-        String algorithm = "DFS";
-        Point startingLocation = new Point(1, 0);
-        Point endingLocation = new Point(1, 20);
-
-        perfectMazeBoard = new PerfectMazeBoard();
-        perfectMazeBoard.setMaze(maze);
-        perfectMazeBoard.setStartingLocation(startingLocation);
-        perfectMazeBoard.setEndingLocation(endingLocation);
-        perfectMazeBoard.setAlgorithm(algorithm);
-        perfectMazeBoard.setRows(maze.length);
-        perfectMazeBoard.setColumns(maze[0].length);
-        perfectMazeBoard.setRowsWithWalls(2*maze.length + 1);
-        perfectMazeBoard.setColsWithWalls(2*maze[0].length + 1);
+    private void concludeError() {
+        CurrentGameContainer.setIsTryingToImprove(false);
+        PageLoader.loadPage(FXMLPaths.GAME_OPTIONS);
     }
-
 
 }

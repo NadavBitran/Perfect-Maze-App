@@ -8,7 +8,7 @@ module com.example.perfectmazeclient {
     opens com.example.perfectmazeclient to javafx.fxml;
     exports com.example.perfectmazeclient;
     exports com.example.perfectmazeclient.dm;
-    opens com.example.perfectmazeclient.dm to javafx.fxml;
+    opens com.example.perfectmazeclient.dm to javafx.fxml, com.google.gson;
     exports com.example.perfectmazeclient.util;
     opens com.example.perfectmazeclient.util to javafx.fxml;
     exports com.example.perfectmazeclient.validation;
@@ -17,4 +17,9 @@ module com.example.perfectmazeclient {
     opens com.example.perfectmazeclient.constants to javafx.fxml;
     exports com.example.perfectmazeclient.views;
     opens com.example.perfectmazeclient.views to javafx.fxml;
+    exports com.example.perfectmazeclient.requests.communication;
+    opens com.example.perfectmazeclient.requests.communication to com.google.gson;
+    exports com.example.perfectmazeclient.containers;
+    opens com.example.perfectmazeclient.containers to javafx.fxml;
+
 }

@@ -23,14 +23,15 @@ public class PerfectMazeBoard implements Serializable {
      * @param maze     The maze represented as a 2D array of integers.
      * @param mazeSize The size of the maze.
      */
-    public PerfectMazeBoard(int[][] maze, int mazeSize, Point endingLocation) {
+    public PerfectMazeBoard(int[][] maze, int mazeSize, Point endingLocation, String algorithm) {
         this.maze = maze;
-        this.startingLocation = new Point(0, 1);
+        this.startingLocation = new Point(1, 0);
         this.endingLocation = endingLocation;
         this.rows = mazeSize;
         this.columns = mazeSize;
         this.rowsWithWalls = mazeSize*2 + 1;
         this.colsWithWalls = mazeSize*2 + 1;
+        this.algorithm = algorithm;
     }
 
     /**

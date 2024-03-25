@@ -22,7 +22,7 @@ public class PerfectMazeGenerator {
      * @param mazeSize     The size of the maze board to be generated.
      * @return A perfect maze board generated from the spanning tree, or {@code null} if the inputs are invalid.
      */
-    public static PerfectMazeBoard generateMazeFromSpanningTree(UndirectedGraph<Integer> spanningTree, int mazeSize) {
+    public static PerfectMazeBoard generateMazeFromSpanningTree(UndirectedGraph<Integer> spanningTree, int mazeSize, String shortestPathAlgorithmName) {
         if (spanningTree == null || !isMazeSizeValid(mazeSize)) return null;
 
         int[][] perfectMaze = new int[2 * mazeSize + 1][2 * mazeSize + 1];
@@ -49,10 +49,10 @@ public class PerfectMazeGenerator {
 
         Point generatedEndingMazeLocation = new Point((int)(Math.random() * mazeSize) * 2 + 1 , (2*mazeSize));
 
-        perfectMaze[generatedEndingMazeLocation.x][generatedEndingMazeLocation.y] = 1;
+        perfectMaze[generatedEndingMazeLocation.y][generatedEndingMazeLocation.x] = 1;
         perfectMaze[0][1] = 1;
 
-        return new PerfectMazeBoard(perfectMaze, mazeSize, generatedEndingMazeLocation);
+        return new PerfectMazeBoard(perfectMaze, mazeSize, generatedEndingMazeLocation, shortestPathAlgorithmName);
     }
 
     /**

@@ -39,8 +39,15 @@ public class Server implements Runnable {
 
             while (true)
             {
-                Socket socket = serverSocket.accept();
-                threadPool.execute(new HandleRequest(socket));
+                try
+                {
+                    Socket socket = serverSocket.accept();
+                    threadPool.execute(new HandleRequest(socket));
+                }
+                catch (IOException e)
+                {
+                    System.err.println("Error accepting client connection: " + e.getMessage());
+                }
             }
         }
         catch (IOException e)

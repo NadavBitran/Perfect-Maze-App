@@ -165,7 +165,7 @@ public class GameService {
      * @param mazeSize The size of the maze board to be generated.
      * @return A perfect maze board of the specified size, or {@code null} if the size is invalid.
      */
-    public PerfectMazeBoard generateMaze(int mazeSize, IShortestPaths<Integer> shortestPathAlgorithm) throws ServiceRequestFailed {
+    public PerfectMazeBoard generateMaze(int mazeSize, IShortestPaths<Integer> shortestPathAlgorithm, String shortestPathAlgorithmName) throws ServiceRequestFailed {
         if(shortestPathAlgorithm == null)
             throw new ServiceRequestFailed("Failed to generate maze: algorithm not specified");
 
@@ -174,7 +174,7 @@ public class GameService {
 
         UndirectedGraph<Integer> spanningTree = shortestPathAlgorithm.run();
 
-        return PerfectMazeGenerator.generateMazeFromSpanningTree(spanningTree, mazeSize);
+        return PerfectMazeGenerator.generateMazeFromSpanningTree(spanningTree, mazeSize, shortestPathAlgorithmName);
     }
 
 }

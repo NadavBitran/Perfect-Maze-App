@@ -8,12 +8,12 @@ import javafx.fxml.FXML;
 public class MainController {
     @FXML
     protected void onLoginButtonClick(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.LOGIN, event, getClass());
+        PageLoader.loadPage(FXMLPaths.LOGIN);
     }
 
     @FXML
     protected void onRegisterButtonClick(ActionEvent event) {
-        PageLoader.loadPage(FXMLPaths.SIGN_UP, event, getClass());
+        PageLoader.loadPage(FXMLPaths.SIGN_UP);
     }
 
     @FXML

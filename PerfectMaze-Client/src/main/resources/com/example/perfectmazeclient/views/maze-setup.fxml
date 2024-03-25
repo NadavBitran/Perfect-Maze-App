@@ -50,6 +50,11 @@
                     </items>
                 </ChoiceBox>
             </HBox>
+         <Label fx:id="unselectedFieldsError" prefWidth="401.0" text="Please Choose From All Fields" textFill="#dc3545">
+            <font>
+               <Font name="Dosis ExtraBold" size="16.0" />
+            </font>
+         </Label>
 
             <Button onAction="#onStartButtonClicked" prefHeight="50.0" prefWidth="297.0" styleClass="btn-start" text="Start" textFill="WHITE">
                 <VBox.margin>

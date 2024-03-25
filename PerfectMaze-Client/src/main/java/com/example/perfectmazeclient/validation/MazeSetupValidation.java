@@ -1,18 +1,52 @@
 package com.example.perfectmazeclient.validation;
 
-import com.example.perfectmazeclient.util.AlertError;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
 public class MazeSetupValidation {
-    public static boolean validateMazeSetup(String difficulty, String generatiorType) {
+    private static final String FIELD_ERROR_CLASS = "field-error";
+    private Label unselectedFieldsError;
+    private ChoiceBox<String> mazeSizeChoiceBox;
+    private ChoiceBox<String> generatorAlgorithmChoiceBox;
+
+    public MazeSetupValidation(ChoiceBox<String> mazeSizeChoiceBox, ChoiceBox<String> generatorAlgorithmChoiceBox, Label unselectedFieldsError) {
+        this.mazeSizeChoiceBox = mazeSizeChoiceBox;
+        this.generatorAlgorithmChoiceBox = generatorAlgorithmChoiceBox;
+        this.unselectedFieldsError = unselectedFieldsError;
+    }
+    public boolean validateMazeSetup() {
+
+        boolean isValid = true;
+
+        resetErrorFields();
+
+        String difficulty = mazeSizeChoiceBox.getValue();
+        String generatorType = generatorAlgorithmChoiceBox.getValue();
+
         if (difficulty == null || difficulty.isEmpty()) {
-            AlertError.showAlertError("Maze Setup Error", "Selection Setup", "Please select a maze size.");
-            return false;
+            showErrorField(mazeSizeChoiceBox, "Please select all fields.");
+            isValid = false;
         }
-        if (generatiorType == null || generatiorType.isEmpty()) {
-            AlertError.showAlertError("Maze Setup Error", "Selection Setup", "Please select a generator algorithm.");
-            return false;
+        if (generatorType == null || generatorType.isEmpty()) {
+            showErrorField(generatorAlgorithmChoiceBox, "Please select all fields.");
+            isValid = false;
         }
-        return true;
+        return isValid;
+    }
+
+    private void resetErrorFields() {
+        unselectedFieldsError.setVisible(false);
+        unselectedFieldsError.setManaged(false);
+
+        mazeSizeChoiceBox.getStyleClass().remove(FIELD_ERROR_CLASS);
+        generatorAlgorithmChoiceBox.getStyleClass().remove(FIELD_ERROR_CLASS);
+    }
+
+    private void showErrorField(ChoiceBox<String> field, String errorMessage) {
+        field.getStyleClass().add(FIELD_ERROR_CLASS);
+        unselectedFieldsError.setText(errorMessage);
+        unselectedFieldsError.setVisible(true);
+        unselectedFieldsError.setManaged(true);
     }
 
 }

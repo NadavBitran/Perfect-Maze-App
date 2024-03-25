@@ -33,3 +33,8 @@
     -fx-font-family: "Dosis ExtraBold";
     -fx-font-size: 26px;
 }
+
+.field-error {
+    -fx-border-color: #dc3545;
+    -fx-border-width: 2px;
+}
