@@ -19,6 +19,7 @@ public class Sender {
     public static <T> Response sendRequest(String action, T body) {
 
         Request request = RequestUtils.buildRequest(action, body);
+        Response response = null;
 
         try
         {
@@ -31,12 +32,14 @@ public class Sender {
 
                 String jsonResponse = scanner.nextLine();
 
-                return gson.fromJson(jsonResponse, Response.class);
+                response = gson.fromJson(jsonResponse, Response.class);
             }
         }
         catch (IOException e)
         {
-            return ResponseUtils.buildResponse("Error: failed to send request", "failed");
+            response = ResponseUtils.buildResponse("Error: failed to send request", "failed");
         }
+
+        return response;
     }
 }
