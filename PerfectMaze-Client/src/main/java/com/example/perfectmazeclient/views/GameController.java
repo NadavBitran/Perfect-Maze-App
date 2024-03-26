@@ -1,7 +1,7 @@
 package com.example.perfectmazeclient.views;
 
 import com.example.perfectmazeclient.constants.FXMLPaths;
-import com.example.perfectmazeclient.constants.WindowSize;
+import com.example.perfectmazeclient.constants.inGameWindowSize;
 import com.example.perfectmazeclient.dm.Point;
 import com.example.perfectmazeclient.exceptions.RequestFailed;
 import com.example.perfectmazeclient.game.GameBoard;
@@ -68,8 +68,8 @@ public class GameController implements Initializable {
         int numRows = gameBoard.getRowsWithWalls();
         int numCols = gameBoard.getColsWithWalls();
 
-        rectangleWidth =  WindowSize.WINDOW_WIDTH / numCols;
-        rectangleHeight = WindowSize.WINDOW_HEIGHT / numRows;
+        rectangleWidth =  inGameWindowSize.WINDOW_WIDTH / numCols;
+        rectangleHeight = inGameWindowSize.WINDOW_HEIGHT / numRows;
 
         for(int i = 0; i < numRows; i++) {
             for(int j = 0; j < numCols; j++) {
