@@ -22,9 +22,8 @@ public class Sender {
 
         try
         {
-            Socket clientSocket = new Socket(SERVER_IP, SERVER_PORT);
-
-            try (Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(clientSocket.getInputStream())));
+            try (Socket clientSocket = new Socket(SERVER_IP, SERVER_PORT);
+                 Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(clientSocket.getInputStream())));
                  PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))))
             {
                 writer.println(gson.toJson(request));
