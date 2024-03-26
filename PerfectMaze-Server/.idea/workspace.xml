@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b5878413-746c-4fc4-9f5a-5337d92420a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/WindowSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/constants/inGameWindowSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/views/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Client/src/main/java/com/example/perfectmazeclient/requests/sender/Sender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +29,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Server",
+    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
