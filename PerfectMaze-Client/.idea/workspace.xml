@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9f1fd871-821c-4894-bde2-3c157ee8e066" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/css/main-menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/images/mainMenuBackground.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/constants/WindowSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/constants/inGameWindowSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/perfectmazeclient/views/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/game-window.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/perfectmazeclient/views/main-menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PerfectMaze-Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PerfectMaze-Server/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -33,35 +35,35 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2ddyQVRMTtEXAcwfQWQB2Rk147W" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient",
-    "last_opened_file_path": "C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40689656",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Nadav&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client/src/main/resources/com/example/perfectmazeclient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadav/OneDrive/Desktop/PerfectMaze-App/PerfectMaze-Client&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40689656&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.perfectmazeclient" />
@@ -81,6 +83,13 @@
       <recent name="com.example.perfectmazeclient.views" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +98,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710352234845</updated>
+      <workItem from="1711472971795" duration="14000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
